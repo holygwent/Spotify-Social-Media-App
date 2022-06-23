@@ -5,7 +5,12 @@
       "ProjectGuid": "5a3d71b7-eead-4845-9ddd-6ceb726ba871",
       "DisplayName": "SpotifySocialMedia",
       "ColorIndex": 0
+    },
+    "54f23235-8510-4a58-9805-aa3e2b076902": {
+      "ProjectGuid": "54f23235-8510-4a58-9805-aa3e2b076902",
+      "DisplayName": "SpotifySocialMedia.SpotifyAuthorizationDataDatabase",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }

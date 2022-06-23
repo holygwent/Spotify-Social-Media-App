@@ -18,5 +18,6 @@ namespace SpotifySocialMedia.SpotifyAuthorizationDataDatabase.Models
         public string scope { get; set; }
         public int expires_in { get; set; }
         public string refresh_token { get; set; }
+        public DateTime expires_at { get; set; }
     }
 }

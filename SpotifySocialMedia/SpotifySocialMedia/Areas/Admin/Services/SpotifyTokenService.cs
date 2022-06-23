@@ -8,7 +8,8 @@ namespace SpotifySocialMedia.Areas.Admin.Services
 {
     public interface ISpotifyTokenService
     {
-
+        Task SaveNewTokenToDatabase(string code, string clientId, string clientSecret);
+        Task RefreshToken(string refreshToken, string clientId, string clientSecret);
     }
     public class SpotifyTokenService: ISpotifyTokenService
     {
@@ -44,6 +45,8 @@ namespace SpotifySocialMedia.Areas.Admin.Services
 
             var responseStream = await response.Content.ReadAsStreamAsync();
             var spotifyToken = await JsonSerializer.DeserializeAsync<SpotifyToken>(responseStream);
+            var seconds = spotifyToken.expires_in;
+            spotifyToken.expires_at = DateTime.Now.AddSeconds(seconds);
             _databaseSpotifyTokenService.DropToken();
             _databaseSpotifyTokenService.AddToken(spotifyToken);
 
@@ -75,7 +78,8 @@ namespace SpotifySocialMedia.Areas.Admin.Services
 
             var responseStream = await response.Content.ReadAsStreamAsync();
             var spotifyToken = await JsonSerializer.DeserializeAsync<SpotifyToken>(responseStream);
-
+            var seconds = spotifyToken.expires_in;
+            spotifyToken.expires_at = DateTime.Now.AddSeconds(seconds);
             _databaseSpotifyTokenService.DropToken();
             _databaseSpotifyTokenService.AddToken(spotifyToken);
 
