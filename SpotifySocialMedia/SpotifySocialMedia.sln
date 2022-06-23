@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpotifySocialMedia", "SpotifySocialMedia\SpotifySocialMedia.csproj", "{5A3D71B7-EEAD-4845-9DDD-6CEB726BA871}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifySocialMedia.SpotifySettingsDatabase", "SpotifySocialMedia.SpotifySettingsDatabase\SpotifySocialMedia.SpotifySettingsDatabase.csproj", "{54F23235-8510-4A58-9805-AA3E2B076902}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifySocialMedia.SpotifyAuthorizationDataDatabase", "SpotifySocialMedia.SpotifySettingsDatabase\SpotifySocialMedia.SpotifyAuthorizationDataDatabase.csproj", "{54F23235-8510-4A58-9805-AA3E2B076902}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

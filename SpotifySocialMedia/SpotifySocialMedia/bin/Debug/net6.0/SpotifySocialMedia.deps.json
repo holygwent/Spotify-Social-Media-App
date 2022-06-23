@@ -14,7 +14,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.2",
           "Microsoft.EntityFrameworkCore.Tools": "6.0.2",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.6",
-          "SpotifySocialMedia.SpotifySettingsDatabase": "1.0.0",
+          "SpotifySocialMedia.SpotifyAuthorizationDataDatabase": "1.0.0",
           "Swashbuckle.AspNetCore": "6.3.0"
         },
         "runtime": {
@@ -2472,14 +2472,14 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
-      "SpotifySocialMedia.SpotifySettingsDatabase/1.0.0": {
+      "SpotifySocialMedia.SpotifyAuthorizationDataDatabase/1.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Options": "6.0.0",
           "MongoDB.Bson": "2.16.1",
           "MongoDB.Driver": "2.16.1"
         },
         "runtime": {
-          "SpotifySocialMedia.SpotifySettingsDatabase.dll": {}
+          "SpotifySocialMedia.SpotifyAuthorizationDataDatabase.dll": {}
         }
       }
     }
@@ -3834,7 +3834,7 @@
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
     },
-    "SpotifySocialMedia.SpotifySettingsDatabase/1.0.0": {
+    "SpotifySocialMedia.SpotifyAuthorizationDataDatabase/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

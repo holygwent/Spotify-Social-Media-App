@@ -739,9 +739,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\48502\\source\\repos\\Spotify-Social-Media-App\\SpotifySocialMedia\\SpotifySocialMedia.SpotifySettingsDatabase\\SpotifySocialMedia.SpotifySettingsDatabase.csproj",
-      "projectName": "SpotifySocialMedia.SpotifySettingsDatabase",
-      "projectPath": "C:\\Users\\48502\\source\\repos\\Spotify-Social-Media-App\\SpotifySocialMedia\\SpotifySocialMedia.SpotifySettingsDatabase\\SpotifySocialMedia.SpotifySettingsDatabase.csproj",
+      "projectUniqueName": "C:\\Users\\48502\\source\\repos\\Spotify-Social-Media-App\\SpotifySocialMedia\\SpotifySocialMedia.SpotifySettingsDatabase\\SpotifySocialMedia.SpotifyAuthorizationDataDatabase.csproj",
+      "projectName": "SpotifySocialMedia.SpotifyAuthorizationDataDatabase",
+      "projectPath": "C:\\Users\\48502\\source\\repos\\Spotify-Social-Media-App\\SpotifySocialMedia\\SpotifySocialMedia.SpotifySettingsDatabase\\SpotifySocialMedia.SpotifyAuthorizationDataDatabase.csproj",
       "packagesPath": "C:\\Users\\48502\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\48502\\source\\repos\\Spotify-Social-Media-App\\SpotifySocialMedia\\SpotifySocialMedia.SpotifySettingsDatabase\\obj\\",
       "projectStyle": "PackageReference",

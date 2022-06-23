@@ -3393,7 +3393,7 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
-      "SpotifySocialMedia.SpotifySettingsDatabase/1.0.0": {
+      "SpotifySocialMedia.SpotifyAuthorizationDataDatabase/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
@@ -3402,10 +3402,10 @@
           "MongoDB.Driver": "2.16.1"
         },
         "compile": {
-          "bin/placeholder/SpotifySocialMedia.SpotifySettingsDatabase.dll": {}
+          "bin/placeholder/SpotifySocialMedia.SpotifyAuthorizationDataDatabase.dll": {}
         },
         "runtime": {
-          "bin/placeholder/SpotifySocialMedia.SpotifySettingsDatabase.dll": {}
+          "bin/placeholder/SpotifySocialMedia.SpotifyAuthorizationDataDatabase.dll": {}
         }
       }
     }
@@ -10370,10 +10370,10 @@
         "system.xml.xdocument.nuspec"
       ]
     },
-    "SpotifySocialMedia.SpotifySettingsDatabase/1.0.0": {
+    "SpotifySocialMedia.SpotifyAuthorizationDataDatabase/1.0.0": {
       "type": "project",
-      "path": "../SpotifySocialMedia.SpotifySettingsDatabase/SpotifySocialMedia.SpotifySettingsDatabase.csproj",
-      "msbuildProject": "../SpotifySocialMedia.SpotifySettingsDatabase/SpotifySocialMedia.SpotifySettingsDatabase.csproj"
+      "path": "../SpotifySocialMedia.SpotifySettingsDatabase/SpotifySocialMedia.SpotifyAuthorizationDataDatabase.csproj",
+      "msbuildProject": "../SpotifySocialMedia.SpotifySettingsDatabase/SpotifySocialMedia.SpotifyAuthorizationDataDatabase.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -10384,7 +10384,7 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.2",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.2",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.6",
-      "SpotifySocialMedia.SpotifySettingsDatabase >= 1.0.0",
+      "SpotifySocialMedia.SpotifyAuthorizationDataDatabase >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.3.0"
     ]
   },
@@ -10420,8 +10420,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\48502\\source\\repos\\Spotify-Social-Media-App\\SpotifySocialMedia\\SpotifySocialMedia.SpotifySettingsDatabase\\SpotifySocialMedia.SpotifySettingsDatabase.csproj": {
-              "projectPath": "C:\\Users\\48502\\source\\repos\\Spotify-Social-Media-App\\SpotifySocialMedia\\SpotifySocialMedia.SpotifySettingsDatabase\\SpotifySocialMedia.SpotifySettingsDatabase.csproj"
+            "C:\\Users\\48502\\source\\repos\\Spotify-Social-Media-App\\SpotifySocialMedia\\SpotifySocialMedia.SpotifySettingsDatabase\\SpotifySocialMedia.SpotifyAuthorizationDataDatabase.csproj": {
+              "projectPath": "C:\\Users\\48502\\source\\repos\\Spotify-Social-Media-App\\SpotifySocialMedia\\SpotifySocialMedia.SpotifySettingsDatabase\\SpotifySocialMedia.SpotifyAuthorizationDataDatabase.csproj"
             }
           }
         }
