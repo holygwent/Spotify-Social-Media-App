@@ -15,29 +15,48 @@ namespace SpotifySocialMedia.Areas.Admin.Controllers
         private readonly IAuthorizeService _authorizeService;
         private readonly IConfiguration _configurationAppSettingJSON;
         private readonly IDatabaseAuthorizationCodeService _databaseAuthorizationCodeService;
+        private readonly ISpotifyTokenService _spotifyTokenService;
+        private readonly IDatabaseSpotifyTokenService _databaseSpotifyTokenService;
 
         public AuthorizationController(IAuthorizeService authorizeService, IConfiguration configurationAppSettingJSON
-            ,IDatabaseAuthorizationCodeService databaseAuthorizationCodeService)
+            ,IDatabaseAuthorizationCodeService databaseAuthorizationCodeService,
+            ISpotifyTokenService spotifyTokenService,
+            IDatabaseSpotifyTokenService databaseSpotifyTokenService)
         {
             _authorizeService = authorizeService;
             _configurationAppSettingJSON = configurationAppSettingJSON;
             _databaseAuthorizationCodeService = databaseAuthorizationCodeService;
+            _spotifyTokenService = spotifyTokenService;
+            _databaseSpotifyTokenService = databaseSpotifyTokenService;
         }
-        [HttpGet("Home")]
+        [Route("Home")]
         public IActionResult Home()
         {
             return Ok("git");
         }
 
+        [Route("NewToken")]
+        public  IActionResult NewToken()
+        {
+            _spotifyTokenService.SaveNewTokenToDatabase(_databaseAuthorizationCodeService.GetCode(), _configurationAppSettingJSON["Spotify:ClientId"], _configurationAppSettingJSON["Spotify:ClientSecret"]).Wait();
+            return RedirectToAction("Home", "Authorization");
+        }
 
-        [HttpGet("AuthorizationCode")]
+        [Route("RefreshToken")]
+        public IActionResult RefreshToken()
+        {
+            _spotifyTokenService.RefreshToken(_databaseSpotifyTokenService.GetToken().refresh_token, _configurationAppSettingJSON["Spotify:ClientId"], _configurationAppSettingJSON["Spotify:ClientSecret"]).Wait();
+            return RedirectToAction("Home", "Authorization");
+        }
+
+        [Route("AuthorizationCode")]
         public IActionResult AuthorizationCode()
         {
             string url = _authorizeService.GetLinkToAuthorize();
             return Redirect(url);
         }
 
-        [HttpGet("CallBack")]
+        [Route("CallBack")]
         public IActionResult CallBack(string code, string state)
         {
             if (state == _configurationAppSettingJSON["Spotify:state"])
