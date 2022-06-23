@@ -19,10 +19,17 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.Configure<MongoDatabaseSettings>(builder.Configuration.GetSection("MongoSettingsDatabase"));
 builder.Services.AddScoped<IAuthorizeService, AuthorizeService>();
-
+builder.Services.AddScoped<ISpotifyTokenService, SpotifyTokenService>();
 //mongo services
 builder.Services.AddSingleton<IDatabaseAuthorizationCodeService, DatabaseAuthorizationCodeService>();
+builder.Services.AddSingleton<IDatabaseSpotifyTokenService, DatabaseSpotifyTokenService>();
 
+//http clients
+builder.Services.AddHttpClient<ISpotifyTokenService, SpotifyTokenService>(c =>
+{
+    c.BaseAddress = new Uri("https://accounts.spotify.com");
+    //  c.DefaultRequestHeaders.Add("Content-Type", "application/x-www-form-urlencoded");
+});
 
 var app = builder.Build();
 
