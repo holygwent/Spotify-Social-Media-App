@@ -44,7 +44,7 @@ namespace SpotifySocialMedia.Areas.Admin.Controllers
             {
                 _databaseAuthorizationCodeService.DropCode();
                 _databaseAuthorizationCodeService.AddCode(new AuthorizationCode { Code = code  });
-                var getcode = _databaseAuthorizationCodeService.GetCode();
+        
                 return RedirectToAction("Home", "Authorization");
             }
             else
