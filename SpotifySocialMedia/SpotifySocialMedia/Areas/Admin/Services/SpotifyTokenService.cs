@@ -10,17 +10,21 @@ namespace SpotifySocialMedia.Areas.Admin.Services
     {
         Task SaveNewTokenToDatabase(string code, string clientId, string clientSecret);
         Task RefreshToken(string refreshToken, string clientId, string clientSecret);
+        Task CheckTokenExpireDate();
     }
     public class SpotifyTokenService: ISpotifyTokenService
     {
         private readonly HttpClient _httpClient;
         private readonly IDatabaseSpotifyTokenService _databaseSpotifyTokenService;
+        private readonly IConfiguration _configurationAppSettingJSON;
 
         public SpotifyTokenService(HttpClient httpClient,
-            IDatabaseSpotifyTokenService databaseSpotifyTokenService)
+            IDatabaseSpotifyTokenService databaseSpotifyTokenService,
+             IConfiguration configurationAppSettingJSON)
         {
             _httpClient = httpClient;
            _databaseSpotifyTokenService = databaseSpotifyTokenService;
+            _configurationAppSettingJSON = configurationAppSettingJSON;
         }
         /// <summary>
         /// save token from spotify that will allow me access spotify data to database
@@ -85,5 +89,18 @@ namespace SpotifySocialMedia.Areas.Admin.Services
 
 
         }
+
+        public async Task CheckTokenExpireDate()
+        {
+            var token = _databaseSpotifyTokenService.GetToken();
+            if (token.refresh_token is not null)
+            {
+                if (token.expires_at <= DateTime.Now)
+                {
+                    RefreshToken(token.refresh_token, _configurationAppSettingJSON["Spotify:ClientId"], _configurationAppSettingJSON["Spotify:ClientSecret"]).Wait();
+                }
+            }
+        }
+
     }
 }
