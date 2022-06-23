@@ -1,0 +1,25 @@
+﻿@*@model IEnumerable<SongItem>
+*@
+@model SongItemsTrack
+@{
+    ViewData["Title"] = "Index";
+ 
+}
+
+<h1>Searched songs</h1>
+        @foreach (var item in Model.songItems)
+        {<div>
+            <div class="d-flex flex-row">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/@(item.Id)?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+            </div>
+            <div class="d-flex flex-row-reverse">
+                comment->
+            </div>
+         </div>
+        }
+        <div>
+
+        </div>
+
+
+
