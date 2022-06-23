@@ -22,4 +22,8 @@
     <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SpotifySocialMedia.SpotifySettingsDatabase\SpotifySocialMedia.SpotifySettingsDatabase.csproj" />
+  </ItemGroup>
+
 </Project>

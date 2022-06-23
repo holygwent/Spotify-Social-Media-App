@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SpotifySocialMedia.Areas.Admin.Services;
 using SpotifySocialMedia.Data;
+using SpotifySocialMedia.SpotifySettingsDatabase;
+using SpotifySocialMedia.SpotifySettingsDatabase.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,8 +17,12 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
-
+builder.Services.Configure<MongoDatabaseSettings>(builder.Configuration.GetSection("MongoSettingsDatabase"));
 builder.Services.AddScoped<IAuthorizeService, AuthorizeService>();
+
+//mongo services
+builder.Services.AddSingleton<IDatabaseAuthorizationCodeService, DatabaseAuthorizationCodeService>();
+
 
 var app = builder.Build();
 

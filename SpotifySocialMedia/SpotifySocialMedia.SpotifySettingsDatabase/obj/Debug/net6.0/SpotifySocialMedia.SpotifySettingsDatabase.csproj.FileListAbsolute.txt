@@ -1,0 +1,12 @@
+C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\SpotifySocialMedia.SpotifySettingsDatabase\bin\Debug\net6.0\SpotifySocialMedia.SpotifySettingsDatabase.deps.json
+C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\SpotifySocialMedia.SpotifySettingsDatabase\bin\Debug\net6.0\SpotifySocialMedia.SpotifySettingsDatabase.dll
+C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\SpotifySocialMedia.SpotifySettingsDatabase\bin\Debug\net6.0\ref\SpotifySocialMedia.SpotifySettingsDatabase.dll
+C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\SpotifySocialMedia.SpotifySettingsDatabase\bin\Debug\net6.0\SpotifySocialMedia.SpotifySettingsDatabase.pdb
+C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\SpotifySocialMedia.SpotifySettingsDatabase\obj\Debug\net6.0\SpotifySocialMedia.SpotifySettingsDatabase.csproj.AssemblyReference.cache
+C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\SpotifySocialMedia.SpotifySettingsDatabase\obj\Debug\net6.0\SpotifySocialMedia.SpotifySettingsDatabase.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\SpotifySocialMedia.SpotifySettingsDatabase\obj\Debug\net6.0\SpotifySocialMedia.SpotifySettingsDatabase.AssemblyInfoInputs.cache
+C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\SpotifySocialMedia.SpotifySettingsDatabase\obj\Debug\net6.0\SpotifySocialMedia.SpotifySettingsDatabase.AssemblyInfo.cs
+C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\SpotifySocialMedia.SpotifySettingsDatabase\obj\Debug\net6.0\SpotifySocialMedia.SpotifySettingsDatabase.csproj.CoreCompileInputs.cache
+C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\SpotifySocialMedia.SpotifySettingsDatabase\obj\Debug\net6.0\SpotifySocialMedia.SpotifySettingsDatabase.dll
+C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\SpotifySocialMedia.SpotifySettingsDatabase\obj\Debug\net6.0\ref\SpotifySocialMedia.SpotifySettingsDatabase.dll
+C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\SpotifySocialMedia.SpotifySettingsDatabase\obj\Debug\net6.0\SpotifySocialMedia.SpotifySettingsDatabase.pdb
