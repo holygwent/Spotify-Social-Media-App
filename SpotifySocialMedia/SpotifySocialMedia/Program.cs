@@ -34,7 +34,7 @@ builder.Services.AddHttpClient<ISpotifyTokenService, SpotifyTokenService>(c =>
 });
 builder.Services.AddHttpClient<ISearchService, SearchService>(c =>
 {
-    c.BaseAddress = new Uri("https://api.spotify.com/v1/search");
+    c.BaseAddress = new Uri("https://api.spotify.com/v1/");
     c.DefaultRequestHeaders.Add("Accept", "application/.json");
     
 });
