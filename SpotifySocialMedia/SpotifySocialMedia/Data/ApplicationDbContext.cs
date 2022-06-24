@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using SpotifySocialMedia.Models;
 
 namespace SpotifySocialMedia.Data
 {
@@ -9,5 +10,6 @@ namespace SpotifySocialMedia.Data
             : base(options)
         {
         }
+      
     }
 }
