@@ -1,0 +1,23 @@
+﻿@model SpotifySocialMedia.Models.SongItem
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div class="align-content-center">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/@(Model.Id)?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+</div>
+@*<div class="row">
+    <div class="card m-1" style="width:50%;">
+        <div class="car-body">
+            <h5 class="card-title">@Html.DisplayFor(modelItem =>Model.Artists)</h5>
+            <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(modelItem =>Model.Name)</h6>
+            <p class="card-text">@Html.DisplayFor(modelItem =>Model.Date)</p>
+            <img src="@Html.DisplayFor(modelItem=>Model.ImageUrl)" alt="realese picture" /><br />
+            <a href="@Html.DisplayFor(modelItem=>Model.Link)">Listen</a>
+        </div>
+    </div>
+</div>*@
+
+
