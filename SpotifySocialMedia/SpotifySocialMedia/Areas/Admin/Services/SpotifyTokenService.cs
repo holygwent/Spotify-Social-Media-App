@@ -50,7 +50,7 @@ namespace SpotifySocialMedia.Areas.Admin.Services
             var responseStream = await response.Content.ReadAsStreamAsync();
             var spotifyToken = await JsonSerializer.DeserializeAsync<SpotifyToken>(responseStream);
             var seconds = spotifyToken.expires_in;
-            spotifyToken.expires_at = DateTime.Now.AddSeconds(seconds);
+            spotifyToken.expires_at = DateTime.Now.AddSeconds(seconds).ToUniversalTime();
             _databaseSpotifyTokenService.DropToken();
             _databaseSpotifyTokenService.AddToken(spotifyToken);
 
@@ -83,7 +83,7 @@ namespace SpotifySocialMedia.Areas.Admin.Services
             var responseStream = await response.Content.ReadAsStreamAsync();
             var spotifyToken = await JsonSerializer.DeserializeAsync<SpotifyToken>(responseStream);
             var seconds = spotifyToken.expires_in;
-            spotifyToken.expires_at = DateTime.Now.AddSeconds(seconds);
+            spotifyToken.expires_at = DateTime.Now.AddSeconds(seconds).ToUniversalTime();
             _databaseSpotifyTokenService.DropToken();
             _databaseSpotifyTokenService.AddToken(spotifyToken);
 
@@ -95,7 +95,8 @@ namespace SpotifySocialMedia.Areas.Admin.Services
             var token = _databaseSpotifyTokenService.GetToken();
             if (token.refresh_token is not null)
             {
-                if (token.expires_at <= DateTime.Now)
+                var timeNow = DateTime.Now.ToUniversalTime();
+                if (token.expires_at <= timeNow)
                 {
                     RefreshToken(token.refresh_token, _configurationAppSettingJSON["Spotify:ClientId"], _configurationAppSettingJSON["Spotify:ClientSecret"]).Wait();
                 }
