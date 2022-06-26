@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SpotifySocialMedia.Areas.Admin.Services;
 using SpotifySocialMedia.Data;
+using SpotifySocialMedia.Hubs;
 using SpotifySocialMedia.Services;
 using SpotifySocialMedia.SpotifySettingsDatabase;
 using SpotifySocialMedia.SpotifySettingsDatabase.Services;
@@ -38,7 +39,7 @@ builder.Services.AddHttpClient<ISearchService, SearchService>(c =>
     c.DefaultRequestHeaders.Add("Accept", "application/.json");
     
 });
-
+builder.Services.AddSignalR();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -72,5 +73,5 @@ app.UseEndpoints(endpoints =>
 
 
 app.MapRazorPages();
-
+app.MapHub<CommentHub>("/Chat/Index");
 app.Run();
