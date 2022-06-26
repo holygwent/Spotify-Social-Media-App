@@ -293,3 +293,4 @@ C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\SpotifyS
 C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\SpotifySocialMedia\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll
 C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\SpotifySocialMedia\bin\Debug\net6.0\SpotifySocialMedia.SpotifyAuthorizationDataDatabase.dll
 C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\SpotifySocialMedia\bin\Debug\net6.0\SpotifySocialMedia.SpotifyAuthorizationDataDatabase.pdb
+C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\SpotifySocialMedia\bin\Debug\net6.0\libman.json
