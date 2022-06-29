@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Database.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SpotifySocialMedia.Models;
 
@@ -10,6 +11,7 @@ namespace SpotifySocialMedia.Data
             : base(options)
         {
         }
-      
+        public DbSet<Song> Songs { get; set; }
+        public DbSet<Comment> Comments { get; set; }
     }
 }
