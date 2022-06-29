@@ -4,6 +4,8 @@ using SpotifySocialMedia.Areas.Admin.Services;
 using SpotifySocialMedia.Data;
 using SpotifySocialMedia.Hubs;
 using SpotifySocialMedia.Services;
+using SpotifySocialMedia.Services.Repositories;
+using SpotifySocialMedia.Services.Repositories.Interfaces;
 using SpotifySocialMedia.SpotifySettingsDatabase;
 using SpotifySocialMedia.SpotifySettingsDatabase.Services;
 
@@ -19,10 +21,14 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
+
+
 builder.Services.Configure<MongoDatabaseSettings>(builder.Configuration.GetSection("MongoSettingsDatabase"));
 builder.Services.AddScoped<IAuthorizeService, AuthorizeService>();
 builder.Services.AddScoped<ISpotifyTokenService, SpotifyTokenService>();
 builder.Services.AddScoped<ISearchService , SearchService>();
+builder.Services.AddScoped<ISongRepository , SongRepository>();
 //mongo services
 builder.Services.AddSingleton<IDatabaseAuthorizationCodeService, DatabaseAuthorizationCodeService>();
 builder.Services.AddSingleton<IDatabaseSpotifyTokenService, DatabaseSpotifyTokenService>();
