@@ -2,9 +2,9 @@
 
 @{
     ViewData["Title"] = "Details";
+    var returnUrl = @Context.Request.Path;
 }
-
-<div class="container">
+@*<div class="container">
     <div class="row">
         <div class="col-2 offset-10">
             <div class="form-group">
@@ -16,7 +16,7 @@
 
             </div>
              <div class="form-group">
-                <label>Enter Message</label>
+                <h6>Comment</h6>
                 <textarea name="msg"></textarea>
 
             </div>
@@ -32,7 +32,7 @@
         </div>
     </div>
 </div>
-
+*@
 
 
 
@@ -69,7 +69,7 @@
                             <p class="comment-message">@comment.Content</p>
                             @if(!User.Identity.IsAuthenticated)
                             {
-                                <a  asp-area="Identity" asp-page="/Account/Login" asp-route-ReturnUrl="~Song/@Model.Id">Login to reply</a>
+                                <a  asp-area="Identity" asp-page="/Account/Login" asp-route-ReturnUrl="@(returnUrl)">Login to reply</a>
                             }
                             else
                             {
@@ -79,7 +79,7 @@
                         @if(User.Identity.IsAuthenticated)
                         {
                             <div class="collapse" id="@($"replyComment{comment.Id}")">
-                              form
+                              form 1
                             </div>
 
                         }
@@ -104,20 +104,32 @@
             <div id="CommentSong">
             @if(User.Identity.IsAuthenticated)
             {
+             @*   clamims 
+                http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier
+                http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name
+                http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress*@
                 <div>
-                    form
+                  <input type="hidden"  name="AuthorId" value="@User.Claims.SingleOrDefault(x=>x.Type=="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress").Value">
+                  <input type="hidden" name="songId" value="@Model.Id">
+                 <div class="form-group">
+                     <h6>Comment</h6>
+                     <textarea name="msg"></textarea>
+                 </div>
+                   <button class="btn btn-primary" onclick="send()">Send</button>
                 </div>
             }
             else
             {
-                <a   asp-area="Identity" asp-page="/Account/Login" asp-route-ReturnUrl="~Song/@Model.Id">Login to comment this song</a>
+                <a   asp-area="Identity" asp-page="/Account/Login" asp-route-ReturnUrl="@(returnUrl)">Login to comment this song</a>
 
             }
+
 
             </div>
         </div>
     </div>
 </div>
+
 
 
 
