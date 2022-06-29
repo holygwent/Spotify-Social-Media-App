@@ -29,6 +29,7 @@ builder.Services.AddScoped<IAuthorizeService, AuthorizeService>();
 builder.Services.AddScoped<ISpotifyTokenService, SpotifyTokenService>();
 builder.Services.AddScoped<ISearchService , SearchService>();
 builder.Services.AddScoped<ISongRepository , SongRepository>();
+builder.Services.AddScoped<ICommentRepository , CommentRepository>();
 //mongo services
 builder.Services.AddSingleton<IDatabaseAuthorizationCodeService, DatabaseAuthorizationCodeService>();
 builder.Services.AddSingleton<IDatabaseSpotifyTokenService, DatabaseSpotifyTokenService>();
