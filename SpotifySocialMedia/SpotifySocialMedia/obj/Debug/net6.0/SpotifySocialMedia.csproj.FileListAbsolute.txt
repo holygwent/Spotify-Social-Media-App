@@ -294,3 +294,8 @@ C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\SpotifyS
 C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\SpotifySocialMedia\bin\Debug\net6.0\SpotifySocialMedia.SpotifyAuthorizationDataDatabase.dll
 C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\SpotifySocialMedia\bin\Debug\net6.0\SpotifySocialMedia.SpotifyAuthorizationDataDatabase.pdb
 C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\SpotifySocialMedia\bin\Debug\net6.0\libman.json
+C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\SpotifySocialMedia\bin\Debug\net6.0\Database.dll
+C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\SpotifySocialMedia\bin\Debug\net6.0\Database.pdb
+C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\SpotifySocialMedia\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\SpotifySocialMedia\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\SpotifySocialMedia\obj\Debug\net6.0\scopedcss\Views\Song\Details.cshtml.rz.scp.css

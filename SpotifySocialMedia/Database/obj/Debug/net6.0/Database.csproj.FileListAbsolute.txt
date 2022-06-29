@@ -1,0 +1,12 @@
+C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\Database\bin\Debug\net6.0\Database.deps.json
+C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\Database\bin\Debug\net6.0\Database.dll
+C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\Database\bin\Debug\net6.0\ref\Database.dll
+C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\Database\bin\Debug\net6.0\Database.pdb
+C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\Database\obj\Debug\net6.0\Database.csproj.AssemblyReference.cache
+C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\Database\obj\Debug\net6.0\Database.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\Database\obj\Debug\net6.0\Database.AssemblyInfoInputs.cache
+C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\Database\obj\Debug\net6.0\Database.AssemblyInfo.cs
+C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\Database\obj\Debug\net6.0\Database.csproj.CoreCompileInputs.cache
+C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\Database\obj\Debug\net6.0\Database.dll
+C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\Database\obj\Debug\net6.0\ref\Database.dll
+C:\Users\48502\source\repos\Spotify-Social-Media-App\SpotifySocialMedia\Database\obj\Debug\net6.0\Database.pdb

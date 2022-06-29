@@ -63,10 +63,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/48502/source/repos/Spotify-Social-Media-App/SpotifySocialMedia/SpotifySocialMedia/Views/Song/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29uZ1xEZXRhaWxzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/48502/source/repos/Spotify-Social-Media-App/SpotifySocialMedia/SpotifySocialMedia/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -82,3 +78,7 @@ build_metadata.AdditionalFiles.CssScope = b-d4gy7jjwg1
 [C:/Users/48502/source/repos/Spotify-Social-Media-App/SpotifySocialMedia/SpotifySocialMedia/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-70kni0szu1
+
+[C:/Users/48502/source/repos/Spotify-Social-Media-App/SpotifySocialMedia/SpotifySocialMedia/Views/Song/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29uZ1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-zh4oita9q7
