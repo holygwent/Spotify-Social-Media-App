@@ -32,7 +32,14 @@ function join(element) {
     connection.invoke("JoinGroup", element.getAttribute('alt')).catch(function (err) {
         return console.error(err.toString());
     });
-
+    element.visibility = "hidden";
+    element.style.display = "none";
+    var header = document.getElementById('CommentsHeader');
+    var list = document.getElementById('CommentList');
+    var commentSong = document.getElementById('CommentSong');
+    header.style.visibility = "visible";
+    list.style.visibility = "visible";
+    commentSong.style.visibility = "visible";
 };
 
 window.onbeforeunload = function () {
