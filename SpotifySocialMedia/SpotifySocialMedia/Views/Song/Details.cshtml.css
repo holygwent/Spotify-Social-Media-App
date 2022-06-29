@@ -1,0 +1,51 @@
+﻿#CommentsHeader{
+    visibility:hidden;
+}
+#CommentList {
+    visibility: hidden;
+}
+#CommentSong {
+    visibility: hidden;
+}
+
+.comment-message{
+    opacity:.75;
+    line-height:1.7;
+    font-size:1rem;
+    margin-bottom:0;
+
+}
+.comment-list{
+
+    list-style-type: none;
+    margin-top: 20px;
+}
+.comment-date{
+    color:#ccc !important;
+    font-size:13px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+}
+.comment-body{
+    line-height:1.7;
+    font-weight:400;
+}
+.comment-body p{
+    margin-top:0;
+}
+.commenter-name{
+    font-size:20px;
+}
+.reply-btn{
+    padding:0px 10px 5px 0px !important;
+    text-decoration:none;
+    color:dodgerblue;
+    border:none;
+   
+}
+.reply-btn:focus{
+    outline:none;
+    box-shadow:none;
+
+}
+
