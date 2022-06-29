@@ -1,11 +1,10 @@
-﻿@model SpotifySocialMedia.Models.SongItem
+﻿@model Database.Entities.Song
 
 @{
     ViewData["Title"] = "Details";
 }
 
-@*<input type="text" id="SongId" value="@(Model.Id)" />
-*@<div class="container">
+<div class="container">
     <div class="row">
         <div class="col-2 offset-10">
             <div class="form-group">
@@ -37,9 +36,7 @@
 
 
 
-<div class="align-content-center">
-    <iframe id="SongId" alt="@(Model.Id)"  style="border-radius:12px" src="https://open.spotify.com/embed/track/@(Model.Id)?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-</div>
+
 @*<div class="row">
     <div class="card m-1" style="width:50%;">
         <div class="car-body">
@@ -51,6 +48,77 @@
         </div>
     </div>
 </div>*@
+
+
+<div class="container">
+    <div class="align-content-center">
+    <iframe id="SongId" alt="Song@(Model.Id)"  style="border-radius:12px" src="https://open.spotify.com/embed/track/@(Model.Id)?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+</div>
+    <div class="row mt-5">
+        <div class="col-lg-8 col-md-10 mx-auto">
+           
+            <h3   id="joinGroup"   onclick="join(this);" alt = "Song@(Model.Id)">dddd See Comments</h3>
+            <h3 id="CommentsHeader"  >@Model.Comments.Count() Comments </h3>
+            <ul id="CommentList"   class ="comment-list comment-top" list = "@Model.Comments" count="0">
+                @foreach(var comment in Model.Comments.Where(c =>c.Parent is null).OrderBy(c=>c.CreatedOn))
+                {
+                    <li class="comment-item">
+                        <div class="comment-body">
+                            <h5 class="commenter-name">@comment.Author.UserName</h5>
+                            <div class="comment-date">@comment.CreatedOn.ToShortDateString() @comment.CreatedOn.ToShortTimeString()</div>
+                            <p class="comment-message">@comment.Content</p>
+                            @if(!User.Identity.IsAuthenticated)
+                            {
+                                <a  asp-area="Identity" asp-page="/Account/Login" asp-route-ReturnUrl="~Song/@Model.Id">Login to reply</a>
+                            }
+                            else
+                            {
+                                <a   aria-aria-expanded="false" href="@($"replyComment{comment.Id}")" data-toggle="collapse" class="btn-primary btn">Reply</a>                         
+                            }
+                        </div>
+                        @if(User.Identity.IsAuthenticated)
+                        {
+                            <div class="collapse" id="@($"replyComment{comment.Id}")">
+                              form
+                            </div>
+
+                        }
+                        <ul class="comment-list" list="@comment.Comments" counts="0" style="margin-left:30px;top:0;">
+                            @foreach(var reply in comment.Comments)
+                            {
+                             <li class ="comment">
+                                <div class="comment-body">
+                                     <h5 class="commenter-name">@reply.Author.UserName</h5>
+                                    <div class="comment-date">@reply.CreatedOn.ToShortDateString() @comment.CreatedOn.ToShortTimeString()</div>
+                                     <p class="comment-message">@reply.Content</p>
+                                </div>
+                            </li>
+                            }
+                           
+
+                        </ul>
+
+                    </li>
+                }
+            </ul>
+            <div id="CommentSong">
+            @if(User.Identity.IsAuthenticated)
+            {
+                <div>
+                    form
+                </div>
+            }
+            else
+            {
+                <a   asp-area="Identity" asp-page="/Account/Login" asp-route-ReturnUrl="~Song/@Model.Id">Login to comment this song</a>
+
+            }
+
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
