@@ -1,13 +1,23 @@
 ﻿let connection = new signalR.HubConnectionBuilder().withUrl("/Chat/Index").build();
 
 //connect to hub
-connection.start().then(() => console.log("Connected"))
+connection.start().then(function () {
+    console.log("Connected");
+    let group = document.querySelector("[id=SongId]").getAttribute('alt');
+    connection.invoke("JoinGroup", group).catch(function (err) {
+        return console.error(err.toString());
+       
+    });
+    console.log("joined group " + group);
+})
     .catch((err) => console.log(err));
+
+
 
 //subscribe to an event method
 connection.on("ReceivedMessage", (data) => {
-    console.log(data);
-
+   
+    
     let messageEle = document.querySelector("[id=CommentList]");
     let liEle = document.createElement("li");
     liEle.classList.add('comment-item');
@@ -17,8 +27,8 @@ connection.on("ReceivedMessage", (data) => {
                           <h5 style=\" font-size:20px;\">${data.user}</h5>
                            <div style=\"color:#ccc !important;font-size:13px;letter-spacing:.1em;text-transform:uppercase;\">${data.shortDate} ${data.shortTime}</div>
                            <p style=\" margin-top:0;\">${data.message}</p>
-                      </div>`;
-
+                       </div>`;
+    
 
     messageEle.appendChild(liEle);
  
@@ -28,34 +38,20 @@ connection.on("ReceivedMessage", (data) => {
 //trigger server method to send message
 function send() {
     let username = document.querySelector("[name=AuthorId]").value;
-    let message = document.querySelector("[name=msg]").value;
+    let message = document.querySelector("[name=msg]");
     let group = document.querySelector("[id=SongId]").getAttribute('alt');
     let songId = document.querySelector("[name=songId]").value;
+    let parent = document.querySelector("[name=parent]").value;
 
     if (username != "null" && message != "" && songId != "") {
-        connection.invoke("SendMessageToGroup", group, username, message,songId).catch((err) => console.log(err));
+        connection.invoke("SendMessageToGroup", group, username, message.value,songId,parent).catch((err) => console.log(err));
     }
+
     message.value = "";
    
 };
 
-//trigger server method join user to group
-function join(element) {
-    connection.invoke("JoinGroup", element.getAttribute('alt')).catch(function (err) {
-        return console.error(err.toString());
-    });
 
-    element.visibility = "hidden";
-    element.style.display = "none";
-
-    var header = document.getElementById('CommentsHeader');
-    var list = document.getElementById('CommentList');
-    var commentSong = document.getElementById('CommentSong');
-
-    header.style.visibility = "visible";
-    list.style.visibility = "visible";
-    commentSong.style.visibility = "visible";
-};
 ////trigger server method leave user from group
 window.onbeforeunload = function () {
 
@@ -63,4 +59,23 @@ window.onbeforeunload = function () {
     connection.invoke("LeaveGroup", song).catch(function (err) {
         return console.error(err.toString());
     });
+}
+
+function showReplies(element) {
+    let parent = element.getAttribute('alt');
+    let replies = document.getElementById(`${parent}`);
+    if (element.innerHTML == "Show replies") {
+        replies.style.display = "block";
+        element.innerHTML = "Hide replies"
+    }
+    else {
+        replies.style.display = "none";
+        element.innerHTML = "Show replies"
+    }
+
+    let spr = document.getElementById(`test`);
+    let liEle = document.createElement("p");
+    liEle.innerHTML = ` <span class="change"> ${parent} </span>`;
+
+     spr.appendChild(liEle);
 }
