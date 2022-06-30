@@ -1,4 +1,5 @@
 ﻿using Database.Entities;
+using Microsoft.AspNetCore.Identity;
 using SpotifySocialMedia.Data;
 using SpotifySocialMedia.Services.Repositories.Interfaces;
 using System;
@@ -12,17 +13,22 @@ namespace SpotifySocialMedia.Services.Repositories
     public class CommentRepository: ICommentRepository
     {
         private readonly ApplicationDbContext _dbContext;
-    
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public CommentRepository(ApplicationDbContext dbContext)
+        public CommentRepository(ApplicationDbContext dbContext,UserManager<IdentityUser> userManager)
         {
             _dbContext = dbContext;
-         
+            _userManager = userManager;
         }
         public async Task CreateComment(string username, string message, string songId)
         {
-            //await _dbContext.Comments.AddAsync();
-            //await _dbContext.SaveChangesAsync();
+           var user =  _userManager.FindByEmailAsync(username).Result;
+            if (user is not null)
+            {
+                await _dbContext.Comments.AddAsync(new Comment { Id = Guid.NewGuid().ToString(), AuthorId = user.Id, SongId = songId, Content = message, CreatedOn = DateTime.Now, ParentId = null });
+                await _dbContext.SaveChangesAsync();
+            }
+      
         }
     }
 }
