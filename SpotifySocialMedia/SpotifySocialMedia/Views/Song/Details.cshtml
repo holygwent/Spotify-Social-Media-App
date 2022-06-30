@@ -1,53 +1,17 @@
 ﻿@model Database.Entities.Song
-
+@section Styles {
+    <link href="@Url.Content("~/css/SongDetails.css")" rel="stylesheet" type="text/css" />
+}
 @{
     ViewData["Title"] = "Details";
     var returnUrl = @Context.Request.Path;
+   
 }
-@*<div class="container">
-    <div class="row">
-        <div class="col-2 offset-10">
-            <div class="form-group">
-                <div>
-                <a href="#" id="joinGroup" onclick="join(this)" alt = "@(Model.Id)"> See Comments</a>
-            </div>
-                <label>Enter your name:</label>
-                <input class="form-control" type="text" name="username" />
 
-            </div>
-             <div class="form-group">
-                <h6>Comment</h6>
-                <textarea name="msg"></textarea>
+<div id="test">
 
-            </div>
-            <button class="btn btn-primary" onclick="send()">Send</button>
-
-            <div>
-                <ul class="messages">
-
-
-                </ul>
-
-            </div>
-        </div>
-    </div>
 </div>
-*@
 
-
-
-
-@*<div class="row">
-    <div class="card m-1" style="width:50%;">
-        <div class="car-body">
-            <h5 class="card-title">@Html.DisplayFor(modelItem =>Model.Artists)</h5>
-            <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(modelItem =>Model.Name)</h6>
-            <p class="card-text">@Html.DisplayFor(modelItem =>Model.Date)</p>
-            <img src="@Html.DisplayFor(modelItem=>Model.ImageUrl)" alt="realese picture" /><br />
-            <a href="@Html.DisplayFor(modelItem=>Model.Link)">Listen</a>
-        </div>
-    </div>
-</div>*@
 
 
 <div class="container">
@@ -56,8 +20,6 @@
 </div>
     <div class="row mt-5">
         <div class="col-lg-8 col-md-10 mx-auto">
-           
-            <h3   id="joinGroup"   onclick="join(this);" alt = "Song@(Model.Id)">dddd See Comments</h3>
             <h3 id="CommentsHeader"  >@Model.Comments.Count() Comments </h3>
             <ul id="CommentList"   class ="comment-list comment-top" list = "@Model.Comments" count="0">
                 @foreach(var comment in Model.Comments.Where(c =>c.Parent is null).OrderBy(c=>c.CreatedOn))
@@ -69,24 +31,17 @@
                             <p class="comment-message">@comment.Content</p>
                             @if(!User.Identity.IsAuthenticated)
                             {
-                                <a  asp-area="Identity" asp-page="/Account/Login" asp-route-ReturnUrl="@(returnUrl)">Login to reply</a>
+                                <a  asp-area="Identity" class="btn-primary btn" asp-page="/Account/Login" asp-route-ReturnUrl="@(returnUrl)">Login to show replies</a>
                             }
                             else
                             {
-                                <a   aria-aria-expanded="false" href="@($"replyComment{comment.Id}")" data-toggle="collapse" class="btn-primary btn">Reply</a>                         
+                                <a alt="@(comment.Id)"  onclick="showReplies(this)" href="#"  class="btn-primary btn">Show replies</a>                         
                             }
                         </div>
-                        @if(User.Identity.IsAuthenticated)
-                        {
-                            <div class="collapse" id="@($"replyComment{comment.Id}")">
-                              form 1
-                            </div>
-
-                        }
-                        <ul class="comment-list" list="@comment.Comments" counts="0" style="margin-left:30px;top:0;">
+                        <ul class="comment-list comment-replies " id="@(comment.Id)" list="@comment.Comments" counts="0" style="margin-left:30px;top:0;">
                             @foreach(var reply in comment.Comments)
                             {
-                             <li class ="comment">
+                             <li class ="comment" >
                                 <div class="comment-body">
                                      <h5 class="commenter-name">@reply.Author.UserName</h5>
                                     <div class="comment-date">@reply.CreatedOn.ToShortDateString() @comment.CreatedOn.ToShortTimeString()</div>
@@ -94,9 +49,15 @@
                                 </div>
                             </li>
                             }
-                           
+                          @if(User.Identity.IsAuthenticated)
+                            {
+                                <div  )">
+                                  form 1
+                                </div>
 
+                            }
                         </ul>
+
 
                     </li>
                 }
@@ -111,16 +72,17 @@
                 <div>
                   <input type="hidden"  name="AuthorId" value="@User.Claims.SingleOrDefault(x=>x.Type=="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress").Value">
                   <input type="hidden" name="songId" value="@Model.Id">
+                  <input type="hidden" name="parent" value="null">
                  <div class="form-group">
                      <h6>Comment</h6>
-                     <textarea name="msg"></textarea>
+                     <textarea  name="msg"></textarea>
                  </div>
                    <button class="btn btn-primary" onclick="send()">Send</button>
                 </div>
             }
             else
             {
-                <a   asp-area="Identity" asp-page="/Account/Login" asp-route-ReturnUrl="@(returnUrl)">Login to comment this song</a>
+                <a  class="btn-primary btn"  asp-area="Identity" asp-page="/Account/Login" asp-route-ReturnUrl="@(returnUrl)">Login to comment this song</a>
 
             }
 

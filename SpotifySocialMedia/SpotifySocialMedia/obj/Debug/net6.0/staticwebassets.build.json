@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "CJlDNmv/EO3yL+K+YP9vSexwprnaJqCkVjLITxfZWPU=",
+  "Hash": "SCKLfJwcTeG1vzNbvQ2HPfe6Rkf9hKePERXMAvnYVto=",
   "Source": "SpotifySocialMedia",
   "BasePath": "_content/SpotifySocialMedia",
   "Mode": "Default",
@@ -1086,6 +1086,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\Users\\48502\\source\\repos\\Spotify-Social-Media-App\\SpotifySocialMedia\\SpotifySocialMedia\\wwwroot\\css\\SongDetails.css",
+      "SourceId": "SpotifySocialMedia",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\48502\\source\\repos\\Spotify-Social-Media-App\\SpotifySocialMedia\\SpotifySocialMedia\\wwwroot\\",
+      "BasePath": "_content/SpotifySocialMedia",
+      "RelativePath": "css/SongDetails.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\SongDetails.css"
     },
     {
       "Identity": "C:\\Users\\48502\\source\\repos\\Spotify-Social-Media-App\\SpotifySocialMedia\\SpotifySocialMedia\\wwwroot\\favicon.ico",
