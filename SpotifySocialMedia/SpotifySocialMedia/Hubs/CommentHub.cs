@@ -26,21 +26,25 @@ namespace SpotifySocialMedia.Hubs
         }
         public async Task SendMessageToGroup(string group, string username, string message,string songId,string parent)
         {
-            await Clients.Group(group).SendAsync("ReceivedMessage", new { 
-                user = username, 
-                message = message,
-                shortDate = DateTime.Now.ToShortDateString(),
-                shortTime = DateTime.Now.ToShortTimeString()
-            });
+            string commentId;
             
            if(parent =="null")
             {
-                _commentRepository.CreateComment( username,  message,  songId).Wait();
+               commentId =  _commentRepository.CreateComment( username,  message,  songId).Result;
+                await Clients.Group(group).SendAsync("ReceivedMessage", new
+                {
+                    commentId = commentId,
+                    user = username,
+                    message = message,
+                    shortDate = DateTime.Now.ToShortDateString(),
+                    shortTime = DateTime.Now.ToShortTimeString()
+                });
             }
             else
             {
                //create reply 
             }
+        
 
         }
         public async Task LeaveGroup(string group)
