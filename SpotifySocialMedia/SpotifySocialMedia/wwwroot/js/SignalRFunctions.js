@@ -22,13 +22,17 @@ connection.on("ReceivedMessage", (data) => {
     let liEle = document.createElement("li");
     liEle.classList.add('comment-item');
 
-   liEle.innerHTML = `                       
-                       <div style=\"  line-height:1.7;font-weight:400;\">
-                          <h5 style=\" font-size:20px;\">${data.user}</h5>
-                           <div style=\"color:#ccc !important;font-size:13px;letter-spacing:.1em;text-transform:uppercase;\">${data.shortDate} ${data.shortTime}</div>
-                           <p style=\" margin-top:0;\">${data.message}</p>
-                       </div>`;
-    
+
+    liEle.innerHTML = `
+                         <div class="comment-body">
+                            <h5 class="commenter-name">${data.user}</h5>
+                            <div class="comment-date">${data.shortDate} ${data.shortTime}</div>
+                            <p class="comment-message">${data.message}</p>
+                            <a alt="${data.commentId}"  onclick="showReplies(this)" href="#${data.commentId}"  class="btn-primary btn">Show replies</a>
+                            
+                        </div>
+                        <ul class="comment-list comment-replies " id="${data.commentId}"  style="margin-left:30px;top:0;">
+                         </ul>`;
 
     messageEle.appendChild(liEle);
  
@@ -73,9 +77,5 @@ function showReplies(element) {
         element.innerHTML = "Show replies"
     }
 
-    let spr = document.getElementById(`test`);
-    let liEle = document.createElement("p");
-    liEle.innerHTML = ` <span class="change"> ${parent} </span>`;
-
-     spr.appendChild(liEle);
+   
 }
