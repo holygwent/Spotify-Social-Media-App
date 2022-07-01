@@ -8,12 +8,6 @@
    
 }
 
-<div id="test">
-
-</div>
-
-
-
 <div class="container">
     <div class="align-content-center">
     <iframe id="SongId" alt="Song@(Model.Id)"  style="border-radius:12px" src="https://open.spotify.com/embed/track/@(Model.Id)?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
@@ -35,7 +29,7 @@
                             }
                             else
                             {
-                                <a alt="@(comment.Id)"  onclick="showReplies(this)" href="#"  class="btn-primary btn">Show replies</a>                         
+                                <a alt="@(comment.Id)"  onclick="showReplies(this)" href="#@(comment.Id)"  class="btn-primary btn">Show replies</a>                         
                             }
                         </div>
                         <ul class="comment-list comment-replies " id="@(comment.Id)" list="@comment.Comments" counts="0" style="margin-left:30px;top:0;">
