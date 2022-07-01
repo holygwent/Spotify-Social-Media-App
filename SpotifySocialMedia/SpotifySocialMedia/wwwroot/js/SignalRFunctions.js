@@ -6,9 +6,10 @@ connection.start().then(function () {
     let group = document.querySelector("[id=SongId]").getAttribute('alt');
     connection.invoke("JoinGroup", group).catch(function (err) {
         return console.error(err.toString());
-       
+
     });
     console.log("joined group " + group);
+    
 })
     .catch((err) => console.log(err));
 
@@ -16,26 +17,61 @@ connection.start().then(function () {
 
 //subscribe to an event method
 connection.on("ReceivedMessage", (data) => {
-   
-    
-    let messageEle = document.querySelector("[id=CommentList]");
+
+
+    let commentList = document.querySelector("[id=CommentList]");
     let liEle = document.createElement("li");
     liEle.classList.add('comment-item');
-
+    console.log(data);
 
     liEle.innerHTML = `
                          <div class="comment-body">
                             <h5 class="commenter-name">${data.user}</h5>
                             <div class="comment-date">${data.shortDate} ${data.shortTime}</div>
                             <p class="comment-message">${data.message}</p>
-                            <a alt="${data.commentId}"  onclick="showReplies(this)" href="#${data.commentId}"  class="btn-primary btn">Show replies</a>
+                            <b alt="${data.commentId}"  onclick="showReplies(this)"   class="btn-primary btn">Show replies</b>
                             
                         </div>
                         <ul class="comment-list comment-replies " id="${data.commentId}"  style="margin-left:30px;top:0;">
-                         </ul>`;
+                            <form id="replyForm${data.commentId}">
+                            <input type="hidden"  name="ReplyAuthorId" value="">
+                            <input type="hidden" name="ReplySongId" value="${data.songId}">
+                            <input type="hidden" name="ReplyParent" value="${data.commentId}">
+                            <div class="form-group">
+                                 <h6>Comment</h6>
+                                 <textarea  name="ReplyMessage"></textarea>
+                             </div>
+                                <b alt="replyForm${data.commentId}"  class="btn btn-primary" onclick="sendReply(this)">Send</b>
+                             </form>
+                         </ul>
 
-    messageEle.appendChild(liEle);
- 
+                                  
+
+`;
+    //brakuje zebys dodał autora dla reply
+    commentList.appendChild(liEle);
+    
+
+});
+connection.on("ReceivedReply", (data) => {
+
+    let replyList = document.getElementById(data.parent);
+  
+    let liEle = document.createElement("li");
+    liEle.classList.add('comment');
+    
+
+    liEle.innerHTML = `
+                                <div class="comment-body">
+                                     <h5 class="commenter-name">${data.user}</h5>
+                                    <div class="comment-date">${data.shortDate} ${data.shortTime}</div>
+                                     <p class="comment-message">${data.message}</p>
+                                </div>`;
+
+    replyList.insertBefore(liEle, replyList.children[replyList.children.length-1]);
+
+
+
 
 });
 
@@ -48,13 +84,30 @@ function send() {
     let parent = document.querySelector("[name=parent]").value;
 
     if (username != "null" && message != "" && songId != "") {
-        connection.invoke("SendMessageToGroup", group, username, message.value,songId,parent).catch((err) => console.log(err));
+        connection.invoke("SendMessageToGroup", group, username, message.value, songId, parent).catch((err) => console.log(err));
     }
 
     message.value = "";
-   
+
 };
 
+function sendReply(element) {
+    let replyForm = element.getAttribute('alt');
+    console.log(replyForm);
+    let group = document.querySelector("[id=SongId]").getAttribute('alt');
+    let inputs = document.getElementById(replyForm).elements;
+    let inputAuthorId = inputs["ReplyAuthorId"].value;
+    let inputSongId = inputs["ReplySongId"].value;
+    let inputParent = inputs["ReplyParent"].value;
+    let message = inputs["ReplyMessage"].value;
+   
+
+    if (inputAuthorId != "null" && message != "" && inputSongId != "" && inputParent != "") {
+        connection.invoke("SendReplyToGroup", group, inputAuthorId, message, inputSongId, inputParent).catch((err) => console.log(err));
+    }
+    
+    
+}
 
 ////trigger server method leave user from group
 window.onbeforeunload = function () {
@@ -77,5 +130,6 @@ function showReplies(element) {
         element.innerHTML = "Show replies"
     }
 
-   
+
 }
+
