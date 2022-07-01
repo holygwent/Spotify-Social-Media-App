@@ -5,8 +5,10 @@
 @{
     ViewData["Title"] = "Details";
     var returnUrl = @Context.Request.Path;
+    
    
 }
+
 
 <div class="container">
     <div class="align-content-center">
@@ -29,25 +31,39 @@
                             }
                             else
                             {
-                                <a alt="@(comment.Id)"  onclick="showReplies(this)" href="#@(comment.Id)"  class="btn-primary btn">Show replies</a>                         
+@*                                <a alt="@(comment.Id)"  onclick="showReplies(this)" href="#@(comment.Id)"  class="btn-primary btn">Show replies</a>                         
+*@
+                                 <b alt="@(comment.Id)"  onclick="showReplies(this)"  class="btn-primary btn">Show replies</b>                         
+
                             }
                         </div>
                         <ul class="comment-list comment-replies " id="@(comment.Id)" list="@comment.Comments" counts="0" style="margin-left:30px;top:0;">
-                            @foreach(var reply in comment.Comments)
+                            @foreach(var reply in comment.Comments.OrderBy(c=>c.CreatedOn))
                             {
                              <li class ="comment" >
                                 <div class="comment-body">
                                      <h5 class="commenter-name">@reply.Author.UserName</h5>
-                                    <div class="comment-date">@reply.CreatedOn.ToShortDateString() @comment.CreatedOn.ToShortTimeString()</div>
+                                    <div class="comment-date">@reply.CreatedOn.ToShortDateString() @reply.CreatedOn.ToShortTimeString()</div>
                                      <p class="comment-message">@reply.Content</p>
                                 </div>
                             </li>
                             }
                           @if(User.Identity.IsAuthenticated)
                             {
-                                <div  )">
-                                  form 1
-                                </div>
+                                
+                                     <form id="replyForm@(comment.Id)">
+                                      <input type="hidden"  name="ReplyAuthorId" value="@User.Claims.SingleOrDefault(x=>x.Type=="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress").Value">
+                                      <input type="hidden" name="ReplySongId" value="@Model.Id">
+                                      <input type="hidden" name="ReplyParent" value="@(comment.Id)">
+                                       <div class="form-group">
+                                         <h6>Comment</h6>
+                                         <textarea  name="ReplyMessage"></textarea>
+                                     </div>
+                                      <b alt="replyForm@(comment.Id)"  class="btn btn-primary" onclick="sendReply(this)">Send</b>
+                                    </form>
+
+
+                                
 
                             }
                         </ul>
@@ -85,6 +101,8 @@
         </div>
     </div>
 </div>
+
+
 
 
 
