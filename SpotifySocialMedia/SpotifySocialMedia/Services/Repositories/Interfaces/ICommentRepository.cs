@@ -8,6 +8,6 @@ namespace SpotifySocialMedia.Services.Repositories.Interfaces
 {
     public interface ICommentRepository
     {
-        Task CreateComment(string username, string message, string songId);
+        Task<string> CreateComment(string username, string message, string songId);
     }
 }
