@@ -24,6 +24,23 @@ namespace SpotifySocialMedia.Hubs
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, group);
         }
+
+     
+         public async Task SendReplyToGroup(string group, string username, string message, string songId, string parent)
+        {
+            string commentId;
+            commentId = _commentRepository.CreateReply(username,message, songId, parent).Result;
+            await Clients.Group(group).SendAsync("ReceivedReply", new
+            {
+                commentId = commentId,
+                user = username,
+                message = message,
+                shortDate = DateTime.Now.ToShortDateString(),
+                shortTime = DateTime.Now.ToShortTimeString(),
+                parent = parent
+            });
+        }
+
         public async Task SendMessageToGroup(string group, string username, string message,string songId,string parent)
         {
             string commentId;
@@ -33,6 +50,7 @@ namespace SpotifySocialMedia.Hubs
                commentId =  _commentRepository.CreateComment( username,  message,  songId).Result;
                 await Clients.Group(group).SendAsync("ReceivedMessage", new
                 {
+                    songId = songId,
                     commentId = commentId,
                     user = username,
                     message = message,
@@ -40,10 +58,7 @@ namespace SpotifySocialMedia.Hubs
                     shortTime = DateTime.Now.ToShortTimeString()
                 });
             }
-            else
-            {
-               //create reply 
-            }
+           
         
 
         }
