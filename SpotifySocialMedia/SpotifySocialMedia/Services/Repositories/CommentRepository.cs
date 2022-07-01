@@ -20,15 +20,21 @@ namespace SpotifySocialMedia.Services.Repositories
             _dbContext = dbContext;
             _userManager = userManager;
         }
-        public async Task CreateComment(string username, string message, string songId)
+        public async Task<string> CreateComment(string username, string message, string songId)
         {
+            string commentId;
            var user =  _userManager.FindByEmailAsync(username).Result;
             if (user is not null)
             {
-                await _dbContext.Comments.AddAsync(new Comment { Id = Guid.NewGuid().ToString(), AuthorId = user.Id, SongId = songId, Content = message, CreatedOn = DateTime.Now, ParentId = null });
+                commentId = Guid.NewGuid().ToString();
+                await _dbContext.Comments.AddAsync(new Comment { Id = commentId, AuthorId = user.Id, SongId = songId, Content = message, CreatedOn = DateTime.Now, ParentId = null });
                 await _dbContext.SaveChangesAsync();
+                return commentId;
             }
-      
+            else
+            {
+                return "";
+            }
         }
     }
 }
