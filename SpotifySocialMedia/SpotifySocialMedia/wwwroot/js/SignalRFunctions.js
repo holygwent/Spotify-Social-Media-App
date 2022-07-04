@@ -77,7 +77,7 @@ connection.on("ReceivedReply", (data) => {
 
 //trigger server method to send message
 function send() {
-    let username = document.querySelector("[name=AuthorId]").value;
+    let username = document.querySelector("[name=AuthorEmail]").value;
     let message = document.querySelector("[name=msg]");
     let group = document.querySelector("[id=SongId]").getAttribute('alt');
     let songId = document.querySelector("[name=songId]").value;
@@ -96,14 +96,14 @@ function sendReply(element) {
     console.log(replyForm);
     let group = document.querySelector("[id=SongId]").getAttribute('alt');
     let inputs = document.getElementById(replyForm).elements;
-    let inputAuthorId = inputs["ReplyAuthorId"].value;
+    let inputAuthorEmail = getAuthorEmail();
     let inputSongId = inputs["ReplySongId"].value;
     let inputParent = inputs["ReplyParent"].value;
     let message = inputs["ReplyMessage"].value;
-   
+    console.log("author: " + inputAuthorEmail);
 
-    if (inputAuthorId != "null" && message != "" && inputSongId != "" && inputParent != "") {
-        connection.invoke("SendReplyToGroup", group, inputAuthorId, message, inputSongId, inputParent).catch((err) => console.log(err));
+    if (inputAuthorEmail != "null" && message != "" && inputSongId != "" && inputParent != "") {
+        connection.invoke("SendReplyToGroup", group, inputAuthorEmail, message, inputSongId, inputParent).catch((err) => console.log(err));
     }
     
     
@@ -133,3 +133,9 @@ function showReplies(element) {
 
 }
 
+function getAuthorEmail() {
+    let myForm = document.getElementById('commentForm');
+
+    let child = myForm.querySelector('input[name="AuthorEmail"]');
+    return child.value;
+}
