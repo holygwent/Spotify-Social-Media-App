@@ -13,6 +13,10 @@ namespace SpotifySocialMedia.Controllers
         }
         public async Task<IActionResult> Index([FromQuery]string search)
         {
+            if (search ==""| search is null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
            var songs =  await _searchService.SearchSong(search);
             return View(songs);
         }
