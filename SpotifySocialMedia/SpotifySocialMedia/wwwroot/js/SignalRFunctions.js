@@ -77,12 +77,12 @@ connection.on("ReceivedReply", (data) => {
 
 //trigger server method to send message
 function send() {
-    let username = document.querySelector("[name=AuthorEmail]").value;
-    let message = document.querySelector("[name=msg]");
+    let inputs = document.getElementById("commentForm").elements;
+    let username = inputs["AuthorEmail"].value;
+    let message = inputs["msg"];
     let group = document.querySelector("[id=SongId]").getAttribute('alt');
-    let songId = document.querySelector("[name=songId]").value;
-    let parent = document.querySelector("[name=parent]").value;
-
+    let songId = inputs["songId"].value;
+    let parent = inputs["parent"].value;
     if (username != "null" && message != "" && songId != "") {
         connection.invoke("SendMessageToGroup", group, username, message.value, songId, parent).catch((err) => console.log(err));
     }

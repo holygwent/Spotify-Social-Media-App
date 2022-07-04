@@ -11,6 +11,21 @@
 
 
 <div class="container">
+    <div id="rate" class="row" >
+       <div class="col-sm-6">
+           <h2> 
+               <i class="fa-solid fa-star" style="color:yellow"></i>
+               @ViewBag.AverageRate.AverageValue  
+               <i class="fa-solid fa-user"></i>
+               @ViewBag.AverageRate.NumberOfEvaluators
+           </h2>
+       </div>
+       <div class="col-sm-6 textToRight">
+        <h2>
+        <i class="fa-solid fa-star"></i>
+        </h2>
+       </div>
+    </div>
     <div class="align-content-center">
     <iframe id="SongId" alt="Song@(Model.Id)"  style="border-radius:12px" src="https://open.spotify.com/embed/track/@(Model.Id)?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
     </div>
@@ -84,7 +99,7 @@
                 http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier
                 http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name
                 http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress*@
-                <div id="commentForm">
+                <form id="commentForm">
                   <input type="hidden"  name="AuthorEmail" value="@User.Claims.SingleOrDefault(x=>x.Type=="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress").Value">
                   <input type="hidden" name="songId" value="@Model.Id">
                   <input type="hidden" name="parent" value="null">
@@ -92,8 +107,8 @@
                          <h6>Comment</h6>
                          <textarea  name="msg"></textarea>
                     </div>
-                   <button class="btn btn-primary" onclick="send()">Send</button>
-                </div>
+                   <b class="btn btn-primary" onclick="send()">Send</b>
+                </form>
             }
             else
             {
