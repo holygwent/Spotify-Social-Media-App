@@ -7,5 +7,6 @@ namespace SpotifySocialMedia.Services
         // Task<IEnumerable<SongItem>> SearchSong(string phrase);
        // Task<Song> GetSong(string Id);
         Task<SongItemsTrack> SearchSong(string phrase);
+        Task<SongItemsTrack> GetNextOrPreviousSongs(string url);
     }
 }

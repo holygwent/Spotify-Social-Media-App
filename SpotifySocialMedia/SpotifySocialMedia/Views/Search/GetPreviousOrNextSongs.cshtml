@@ -1,0 +1,36 @@
+﻿
+@model SongItemsTrack
+@section Styles {
+    <link href="@Url.Content("~/css/GoToSongLink.css")" rel="stylesheet" type="text/css" />
+}
+@{
+    ViewData["Title"] = "Index";
+ 
+}
+
+<h1>Searched songs</h1>
+        @foreach (var item in Model.songItems)
+        {<div>
+            <div class="d-flex flex-row">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/@(item.Id)?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+            </div>
+            <div class="d-flex flex-row-reverse">
+                 <a   class="btn-primary btn" asp-action="Details" asp-controller="Song" asp-area=""  asp-route-id="@item.Id">Comment</a>
+            </div>
+         </div>
+        }
+        <div>
+             @if(Model.previousItemsPage is not null)
+            {
+              <a  class="btn-primary btn" asp-action="GetPreviousOrNextSongs" asp-controller="Search" asp-area=""  asp-route-url="@Model.previousItemsPage">Previous</a>
+            }
+
+             @if(Model.nextItemsPage is not null )
+            {
+              <a  class="btn-primary btn" asp-action="GetPreviousOrNextSongs" asp-controller="Search" asp-area=""  asp-route-url="@Model.nextItemsPage">Next</a>
+            }
+           
+        </div>
+
+
+
