@@ -4,6 +4,6 @@
     {
         public List<SongItem> songItems { get; set; }
         public string nextItemsPage { get; set; }
-        public string previosItemsPage { get; set; }
+        public object previousItemsPage { get; set; }
     }
 }

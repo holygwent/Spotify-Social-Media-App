@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "SCKLfJwcTeG1vzNbvQ2HPfe6Rkf9hKePERXMAvnYVto=",
+  "Hash": "iokZmcXLsl2KAFRMK1hK9ytFMAbYSRqDvGZso67cDq4=",
   "Source": "SpotifySocialMedia",
   "BasePath": "_content/SpotifySocialMedia",
   "Mode": "Default",
@@ -1069,6 +1069,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\48502\\source\\repos\\Spotify-Social-Media-App\\SpotifySocialMedia\\SpotifySocialMedia\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\SpotifySocialMedia.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\48502\\source\\repos\\Spotify-Social-Media-App\\SpotifySocialMedia\\SpotifySocialMedia\\wwwroot\\css\\GoToSongLink.css",
+      "SourceId": "SpotifySocialMedia",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\48502\\source\\repos\\Spotify-Social-Media-App\\SpotifySocialMedia\\SpotifySocialMedia\\wwwroot\\",
+      "BasePath": "_content/SpotifySocialMedia",
+      "RelativePath": "css/GoToSongLink.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\GoToSongLink.css"
     },
     {
       "Identity": "C:\\Users\\48502\\source\\repos\\Spotify-Social-Media-App\\SpotifySocialMedia\\SpotifySocialMedia\\wwwroot\\css\\site.css",

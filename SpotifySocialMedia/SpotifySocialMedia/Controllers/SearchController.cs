@@ -20,5 +20,15 @@ namespace SpotifySocialMedia.Controllers
            var songs =  await _searchService.SearchSong(search);
             return View(songs);
         }
+
+        public async Task<IActionResult> GetPreviousOrNextSongs([FromQuery] string url)
+        {
+            if (url == "" | url is null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            var songs = await _searchService.GetNextOrPreviousSongs(url);
+            return View(songs);
+        }
     }
 }
