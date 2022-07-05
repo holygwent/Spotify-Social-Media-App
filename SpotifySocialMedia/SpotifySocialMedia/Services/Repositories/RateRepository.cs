@@ -1,5 +1,6 @@
 ﻿using Database.Entities;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using SpotifySocialMedia.Data;
 using SpotifySocialMedia.Models;
 using SpotifySocialMedia.Services.Repositories.Interfaces;
@@ -39,12 +40,12 @@ namespace SpotifySocialMedia.Services.Repositories
             }
         }
 
-        public async Task<AverageRate> GetAverageRate()
+        public async Task<AverageRate> GetAverageRate(string songId)
         {
             double averageValue=0;
             int numberOfEvaluators;
-            numberOfEvaluators = _dbContext.Rates.Count();
-            foreach (var rate in _dbContext.Rates)
+            numberOfEvaluators = _dbContext.Rates.Where(x => x.SongId == songId).Count();
+            foreach (var rate in _dbContext.Rates.Where(x=>x.SongId==songId))
             {
                 averageValue += (double)rate.Value;
             }
