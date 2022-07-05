@@ -32,4 +32,23 @@ function SendRate(starValue) {
     });
 
 }
+setInterval(function () {
+    let songId = document.getElementById("SongId").getAttribute("alt");
+  
+    let slicedSongId = songId.replace("Song", "");
+    console.log(slicedSongId);
+    $.ajax({
+        url: `/Rate/GetAverageRate?songId=${slicedSongId}`,
+        method: "GET",
+        success: function (data) {
+            console.log(data);
+            document.getElementById("averageValue").innerHTML = data.averageValue;
+            document.getElementById("NumberOfEvaluators").innerHTML = data.numberOfEvaluators;
+        },
+        error: function (err) {
+            console.log(err)
+        }
+    });
 
+
+}, 15000);
