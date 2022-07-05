@@ -12,14 +12,17 @@ namespace SpotifySocialMedia.Controllers
         private readonly ISearchService _searchService;
         private readonly ISongRepository _songRepository;
         private readonly IRateRepository _rateRepository;
+        
 
         public SongController(ISearchService searchService
             , ISongRepository songRepository
-            , IRateRepository rateRepository)
+            , IRateRepository rateRepository
+           )
         {
             _searchService = searchService;
             _songRepository = songRepository;
             _rateRepository = rateRepository;
+        
         }
         [Route("{id}")]
         public IActionResult Details([FromRoute] string id)
@@ -29,6 +32,7 @@ namespace SpotifySocialMedia.Controllers
             {
                 _songRepository.CreateSong(id).Wait();
                 song = _songRepository.GetSong(id).Result;
+            
             }
             ViewBag.AverageRate = _rateRepository.GetAverageRate().Result;
             return View(song);

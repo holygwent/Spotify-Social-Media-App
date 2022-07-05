@@ -14,5 +14,6 @@ namespace SpotifySocialMedia.Data
         public DbSet<Rate> Rates { get; set; }
         public DbSet<Song> Songs { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Artist> Artists { get; set; }
     }
 }
