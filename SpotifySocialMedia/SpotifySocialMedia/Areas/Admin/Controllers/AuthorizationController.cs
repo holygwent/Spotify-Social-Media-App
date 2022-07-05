@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SpotifySocialMedia.Areas.Admin.Services;
 using SpotifySocialMedia.Models;
 using SpotifySocialMedia.SpotifySettingsDatabase.Models;
@@ -7,7 +8,7 @@ using System.Diagnostics;
 
 namespace SpotifySocialMedia.Areas.Admin.Controllers
 {
-    // [Authorize(Roles ="Admin")]
+    [Authorize(Roles ="Admin")]
     [Area("Admin")]
     [Route("Admin/[controller]")]
     public class AuthorizationController : Controller
