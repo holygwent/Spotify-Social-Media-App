@@ -30,6 +30,7 @@ builder.Services.AddScoped<ISpotifyTokenService, SpotifyTokenService>();
 builder.Services.AddScoped<ISearchService , SearchService>();
 builder.Services.AddScoped<ISongRepository , SongRepository>();
 builder.Services.AddScoped<ICommentRepository , CommentRepository>();
+builder.Services.AddScoped<IRateRepository , RateRepository>();
 //mongo services
 builder.Services.AddSingleton<IDatabaseAuthorizationCodeService, DatabaseAuthorizationCodeService>();
 builder.Services.AddSingleton<IDatabaseSpotifyTokenService, DatabaseSpotifyTokenService>();
