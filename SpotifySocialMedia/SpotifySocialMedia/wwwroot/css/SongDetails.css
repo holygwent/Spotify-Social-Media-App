@@ -5,7 +5,16 @@
     font-size: 1rem;
     margin-bottom: 0;
 }
-
+.Stars {
+    float: right;
+}
+.RatingStatistics {
+    float: left;
+}
+.fa-star
+{
+    color:gold;
+}
 .comment-list {
     list-style-type: none;
     margin-top: 20px;
