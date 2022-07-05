@@ -17,7 +17,13 @@ namespace SpotifySocialMedia.Controllers
         public IActionResult AddRate(string songId, string user, int starValue)
         {
             _rateRepository.Add(songId,user,starValue).Wait();
-            return Ok(_rateRepository.GetAverageRate().Result);
+            return Ok(_rateRepository.GetAverageRate(songId).Result);
+        }
+        
+        public IActionResult GetAverageRate(string songId)
+        {
+           var data= _rateRepository.GetAverageRate(songId).Result;
+            return Ok(data);
         }
     }
 }

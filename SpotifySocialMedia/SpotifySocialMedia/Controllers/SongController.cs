@@ -34,7 +34,7 @@ namespace SpotifySocialMedia.Controllers
                 song = _songRepository.GetSong(id).Result;
             
             }
-            ViewBag.AverageRate = _rateRepository.GetAverageRate().Result;
+            ViewBag.AverageRate = _rateRepository.GetAverageRate(id).Result;
             return View(song);
         }
 
