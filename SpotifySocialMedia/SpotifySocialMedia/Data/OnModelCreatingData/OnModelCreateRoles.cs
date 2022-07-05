@@ -4,7 +4,7 @@ namespace SpotifySocialMedia.Data.OnModelCreatingData
 {
     public  class OnModelCreateRoles
     {
-        public static IdentityRole GetRoles()
+        public static List<IdentityRole> GetRoles()
         {
             IdentityRole adminRole = new IdentityRole()
             {
@@ -14,7 +14,18 @@ namespace SpotifySocialMedia.Data.OnModelCreatingData
                 NormalizedName = "ADMIN"
 
             };
-            return adminRole;
+            IdentityRole userRole = new IdentityRole()
+            {
+                Id = Guid.Parse("284183d9-e14e-46be-a224-aae078fa3456").ToString(),
+                Name = "User",
+                ConcurrencyStamp = "1",
+                NormalizedName = "USER"
+
+            };
+            var list = new List<IdentityRole>();
+            list.Add(adminRole);
+            list.Add(userRole);
+            return list;
         }
     }
 }
