@@ -31,6 +31,7 @@ builder.Services.AddScoped<ISearchService , SearchService>();
 builder.Services.AddScoped<ISongRepository , SongRepository>();
 builder.Services.AddScoped<ICommentRepository , CommentRepository>();
 builder.Services.AddScoped<IRateRepository , RateRepository>();
+builder.Services.AddScoped<IArtistRepository , ArtistRepository>();
 //mongo services
 builder.Services.AddSingleton<IDatabaseAuthorizationCodeService, DatabaseAuthorizationCodeService>();
 builder.Services.AddSingleton<IDatabaseSpotifyTokenService, DatabaseSpotifyTokenService>();
@@ -46,6 +47,12 @@ builder.Services.AddHttpClient<ISearchService, SearchService>(c =>
     c.BaseAddress = new Uri("https://api.spotify.com/v1/");
     c.DefaultRequestHeaders.Add("Accept", "application/.json");
     
+});
+builder.Services.AddHttpClient<IArtistRepository, ArtistRepository>(c =>
+{
+    c.BaseAddress = new Uri("https://api.spotify.com/v1/");
+    c.DefaultRequestHeaders.Add("Accept", "application/.json");
+
 });
 builder.Services.AddSignalR();
 var app = builder.Build();
