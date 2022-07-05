@@ -9,7 +9,9 @@ namespace Database.Entities
     public class Song
     {
         public string Id { get; set; }
+        public virtual IEnumerable<Rate> Rates { get; set; }
         public virtual IEnumerable<Comment> Comments { get; set; }
+       
         
     }
 }

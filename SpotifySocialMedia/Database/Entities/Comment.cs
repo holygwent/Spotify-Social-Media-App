@@ -22,7 +22,7 @@ namespace Database.Entities
         public string Content { get; set; }
         public string? ParentId { get; set; }
         public DateTime CreatedOn { get; set; }
-
+        public int Rate { get; set; }
         public virtual IEnumerable<Comment> Comments { get; set; }
         public virtual Song Song { get; set; }
         public virtual IdentityUser Author { get; set; }
