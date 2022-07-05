@@ -3,7 +3,7 @@
     public class Album
     {
         public string album_type { get; set; }
-        public List<Artist> artists { get; set; }
+        public List<SearchArtist> artists { get; set; }
         public ExternalUrls external_urls { get; set; }
         public string href { get; set; }
         public string id { get; set; }
@@ -16,7 +16,7 @@
         public string uri { get; set; }
     }
 
-    public class Artist
+    public class SearchArtist
     {
         public ExternalUrls external_urls { get; set; }
         public string href { get; set; }
@@ -46,7 +46,7 @@
     public class Item
     {
         public Album album { get; set; }
-        public List<Artist> artists { get; set; }
+        public List<SearchArtist> artists { get; set; }
         public int disc_number { get; set; }
         public int duration_ms { get; set; }
         public bool @explicit { get; set; }
