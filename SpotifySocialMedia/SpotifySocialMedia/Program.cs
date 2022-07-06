@@ -43,6 +43,7 @@ builder.Services.AddScoped<ICommentRepository , CommentRepository>();
 builder.Services.AddScoped<IRateRepository , RateRepository>();
 builder.Services.AddScoped<IArtistRepository , ArtistRepository>();
 builder.Services.AddScoped<IUserInformationService, UserInformationService>();
+builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
 //mongo services
 builder.Services.AddSingleton<IDatabaseAuthorizationCodeService, DatabaseAuthorizationCodeService>();
 builder.Services.AddSingleton<IDatabaseSpotifyTokenService, DatabaseSpotifyTokenService>();
