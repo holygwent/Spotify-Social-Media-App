@@ -7,6 +7,8 @@ namespace SpotifySocialMedia.Hubs
     public class CommentHub : Hub
     {
         private readonly ICommentRepository _commentRepository;
+        private readonly IRateRepository _rateRepository;
+
 
 
         //public async Task SendMessage(string username,string message)
@@ -15,9 +17,10 @@ namespace SpotifySocialMedia.Hubs
         //  await Clients.All.SendAsync("ReceivedMessage",new  { user=username,message=message});
         //}
 
-        public CommentHub(ICommentRepository commentRepository)
+        public CommentHub(ICommentRepository commentRepository, IRateRepository rateRepository)
         {
             _commentRepository = commentRepository;
+            _rateRepository = rateRepository;
         }
 
         public async Task JoinGroup(string group)
@@ -25,7 +28,19 @@ namespace SpotifySocialMedia.Hubs
             await Groups.AddToGroupAsync(Context.ConnectionId, group);
         }
 
-     
+        public async Task SendRate(string group, string userEmail, string songId, int value)
+        {
+            _rateRepository.Add(songId, userEmail, value).Wait();
+            var data = _rateRepository.GetAverageRate(songId).Result;
+            await Clients.Group(group).SendAsync("ReceiveAverageRate", new
+            {
+                AverageValue = data.AverageValue,
+                NumberOfEvaluators = data.NumberOfEvaluators
+            }); 
+
+        }
+
+
          public async Task SendReplyToGroup(string group, string username, string message, string songId, string parent)
         {
             string commentId;
@@ -40,7 +55,22 @@ namespace SpotifySocialMedia.Hubs
                 parent = parent
             });
         }
-
+        
+          public async Task SendNotyfication( string group,string username, string message, string songId, string parent)
+        {
+            var commentAuthorInfo = _commentRepository.GetCommentAuthor(parent).Result;
+           
+            if (commentAuthorInfo.AuthorEmail !=username )
+            {
+                await Clients.User(commentAuthorInfo.AuthorId).SendAsync("ReceiveNotify", new
+                {
+                    communicat = "Someone replied to your comment",
+                    songId = songId,
+                    group = group
+                });
+            }
+           
+        }
         public async Task SendMessageToGroup(string group, string username, string message,string songId,string parent)
         {
             string commentId;
