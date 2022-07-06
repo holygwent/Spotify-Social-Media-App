@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using SpotifySocialMedia.Areas.Admin.Services;
 using SpotifySocialMedia.Data;
@@ -8,6 +9,7 @@ using SpotifySocialMedia.Services.Repositories;
 using SpotifySocialMedia.Services.Repositories.Interfaces;
 using SpotifySocialMedia.SpotifySettingsDatabase;
 using SpotifySocialMedia.SpotifySettingsDatabase.Services;
+using System.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 //var connectionString = builder.Configuration.GetConnectionString("ApplicationDbContextConnection") ?? throw new InvalidOperationException("Connection string 'ApplicationDbContextConnection' not found.");
@@ -30,8 +32,8 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
-
-
+//sql connection
+builder.Services.AddTransient<IDbConnection>((sp) => new SqlConnection(connectionString));
 builder.Services.Configure<MongoDatabaseSettings>(builder.Configuration.GetSection("MongoSettingsDatabase"));
 builder.Services.AddScoped<IAuthorizeService, AuthorizeService>();
 builder.Services.AddScoped<ISpotifyTokenService, SpotifyTokenService>();
@@ -40,6 +42,7 @@ builder.Services.AddScoped<ISongRepository , SongRepository>();
 builder.Services.AddScoped<ICommentRepository , CommentRepository>();
 builder.Services.AddScoped<IRateRepository , RateRepository>();
 builder.Services.AddScoped<IArtistRepository , ArtistRepository>();
+builder.Services.AddScoped<IUserInformationService, UserInformationService>();
 //mongo services
 builder.Services.AddSingleton<IDatabaseAuthorizationCodeService, DatabaseAuthorizationCodeService>();
 builder.Services.AddSingleton<IDatabaseSpotifyTokenService, DatabaseSpotifyTokenService>();
