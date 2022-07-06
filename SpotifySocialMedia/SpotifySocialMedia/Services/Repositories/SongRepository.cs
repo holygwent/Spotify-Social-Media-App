@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace SpotifySocialMedia.Services.Repositories
 {
-    internal class SongRepository:ISongRepository
+    internal class SongRepository : ISongRepository
     {
         private readonly ApplicationDbContext _dbContext;
         private readonly IMapper _mapper;
@@ -28,23 +28,25 @@ namespace SpotifySocialMedia.Services.Repositories
 
         public async Task CreateSong(string songId)
         {
-            var artistId = _artistRepository.AddArtist(songId).Result;
-            await _dbContext.Songs.AddAsync(new Song { Id = songId,ArtistId=artistId });
-           
-            await  _dbContext.SaveChangesAsync();
+            var songInfo = _artistRepository.AddArtist(songId).Result;
+
+
+            await _dbContext.Songs.AddAsync(new Song { Id = songId, ArtistId = songInfo.ArtistId, Name = songInfo.SongName });
+
+            await _dbContext.SaveChangesAsync();
         }
         public async Task<Song> GetSong(string songId)
         {
             var song = await _dbContext.Songs
-                .Include(x=>x.Comments)
-                     .ThenInclude(x=>x.Author)
+                .Include(x => x.Comments)
+                     .ThenInclude(x => x.Author)
                 .Include(x => x.Comments)
                      .ThenInclude(x => x.Comments)
-                .FirstOrDefaultAsync(x=>x.Id == songId);
-         
+                .FirstOrDefaultAsync(x => x.Id == songId);
+
             return song;
         }
 
-        
+
     }
 }
