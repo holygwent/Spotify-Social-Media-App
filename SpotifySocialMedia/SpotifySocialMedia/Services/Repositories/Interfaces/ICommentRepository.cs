@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpotifySocialMedia.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +11,6 @@ namespace SpotifySocialMedia.Services.Repositories.Interfaces
     {
         Task<string> CreateComment(string username, string message, string songId);
         Task<string> CreateReply(string username, string message, string songId, string parent);
+        Task<CommentAuthor> GetCommentAuthor(string parentComment);
     }
 }

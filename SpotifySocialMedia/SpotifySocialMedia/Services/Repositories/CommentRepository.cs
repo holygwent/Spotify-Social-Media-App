@@ -1,6 +1,8 @@
 ﻿using Database.Entities;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using SpotifySocialMedia.Data;
+using SpotifySocialMedia.Models;
 using SpotifySocialMedia.Services.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -51,6 +53,23 @@ namespace SpotifySocialMedia.Services.Repositories
             {
                 return "";
             }
+        }
+
+        public async Task<CommentAuthor> GetCommentAuthor( string parentComment)
+        {
+            var comment = _dbContext.Comments.Include(x=>x.Author).SingleOrDefault(x => x.Id == parentComment);
+            if (comment is not null)
+            {
+                return new CommentAuthor
+                {
+                    
+                    AuthorId = comment.AuthorId,
+                    AuthorEmail = comment.Author.Email
+
+                };
+            }
+            else
+                return new CommentAuthor ();
         }
 
     }
