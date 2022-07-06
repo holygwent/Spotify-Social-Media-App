@@ -1,8 +1,15 @@
 ﻿let connection = new signalR.HubConnectionBuilder().withUrl("/Chat/Index").build();
 
+
+$(".ratingStar").click(function () {
+    var starValue = $(this).attr("td-value");
+    $("#ratingValue").val(starValue);
+    SendRateToGroup(starValue);
+    
+})
 //connect to hub
 connection.start().then(function () {
-    console.log("Connected");
+   
     let group = document.querySelector("[id=SongId]").getAttribute('alt');
     connection.invoke("JoinGroup", group).catch(function (err) {
         return console.error(err.toString());
@@ -13,9 +20,6 @@ connection.start().then(function () {
 })
     .catch((err) => console.log(err));
 
-
-
-//subscribe to an event method
 connection.on("ReceivedMessage", (data) => {
 
 
@@ -48,10 +52,16 @@ connection.on("ReceivedMessage", (data) => {
                                   
 
 `;
-    //brakuje zebys dodał autora dla reply
+  
     commentList.appendChild(liEle);
     
 
+});
+
+connection.on("ReceiveAverageRate", (data) => {
+    console.log(data);
+    document.getElementById("averageValue").innerHTML = data.averageValue;
+    document.getElementById("NumberOfEvaluators").innerHTML = data.numberOfEvaluators;
 });
 connection.on("ReceivedReply", (data) => {
 
@@ -75,6 +85,18 @@ connection.on("ReceivedReply", (data) => {
 
 });
 
+connection.on("ReceiveNotify", (data) => {
+    let group = document.querySelector("[id=SongId]").getAttribute('alt');
+
+
+    console.log(data);
+    if (group != data.group) {
+        toastr.info(`<a href="https://localhost:7115/Song/${data.songId}">See</a>`, data.communicat);
+
+    }
+
+
+});
 //trigger server method to send message
 function send() {
     let inputs = document.getElementById("commentForm").elements;
@@ -105,9 +127,26 @@ function sendReply(element) {
     if (inputAuthorEmail != "null" && message != "" && inputSongId != "" && inputParent != "") {
         connection.invoke("SendReplyToGroup", group, inputAuthorEmail, message, inputSongId, inputParent).catch((err) => console.log(err));
     }
-    
+
+    if (inputAuthorEmail != "null" && message != "" && inputSongId != "" && inputParent != "") {
+        connection.invoke("SendNotyfication", group,inputAuthorEmail, message, inputSongId, inputParent).catch((err) => console.log(err));
+    }
     
 }
+function SendRateToGroup(value) {
+    
+    let group = document.querySelector("[id=SongId]").getAttribute('alt');
+    let inputs = document.getElementById("rate").elements;
+    let user = inputs["userEmailRate"].value;
+    let songId = inputs["songIdRate"].value;
+   
+    if (user != "null" &&  songId != "") {
+        connection.invoke("SendRate", group, user, songId, parseInt(value)).catch((err) => console.log(err));
+    }
+
+ 
+
+};
 
 ////trigger server method leave user from group
 window.onbeforeunload = function () {
