@@ -8,6 +8,7 @@ namespace SpotifySocialMedia.Hubs
     {
         private readonly ICommentRepository _commentRepository;
         private readonly IRateRepository _rateRepository;
+        private readonly INotificationRepository _notificationRepository;
 
 
 
@@ -17,10 +18,11 @@ namespace SpotifySocialMedia.Hubs
         //  await Clients.All.SendAsync("ReceivedMessage",new  { user=username,message=message});
         //}
 
-        public CommentHub(ICommentRepository commentRepository, IRateRepository rateRepository)
+        public CommentHub(ICommentRepository commentRepository, IRateRepository rateRepository,INotificationRepository notificationRepository)
         {
             _commentRepository = commentRepository;
             _rateRepository = rateRepository;
+           _notificationRepository = notificationRepository;
         }
 
         public async Task JoinGroup(string group)
@@ -62,6 +64,7 @@ namespace SpotifySocialMedia.Hubs
            
             if (commentAuthorInfo.AuthorEmail !=username )
             {
+                _notificationRepository.AddNotification(commentAuthorInfo.AuthorId, songId).Wait();
                 await Clients.User(commentAuthorInfo.AuthorId).SendAsync("ReceiveNotify", new
                 {
                     communicat = "Someone replied to your comment",

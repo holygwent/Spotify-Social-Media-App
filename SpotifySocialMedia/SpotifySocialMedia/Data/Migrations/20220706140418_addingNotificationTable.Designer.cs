@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SpotifySocialMedia.Data;
 
@@ -11,9 +12,10 @@ using SpotifySocialMedia.Data;
 namespace SpotifySocialMedia.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220706140418_addingNotificationTable")]
+    partial class addingNotificationTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -104,7 +106,7 @@ namespace SpotifySocialMedia.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Notifications");
+                    b.ToTable("Notification");
                 });
 
             modelBuilder.Entity("Database.Entities.Rate", b =>
@@ -292,16 +294,16 @@ namespace SpotifySocialMedia.Data.Migrations
                         {
                             Id = "8931ce67-348b-48b6-96fc-6fc47a74311e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fb32d2da-c4b0-4150-a7fb-2f3680b15d5f",
+                            ConcurrencyStamp = "19dbfb1e-aa4a-4705-80b1-f03a6f64e841",
                             Email = "Admin@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEF/UiCZrt7UrIrUGv+1XvQDLDrcY2uKyUOUQ5absZ+b/6pfBxKxzowqv5fqDEARFuA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPz0fxsSSWd7IxtSyEtDhEVXQyBL+C222h30gqnfGO3xaNVfgn1SnKRnomJqiNT/8g==",
                             PhoneNumber = "999111222",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "49357460-030e-451b-a21f-7d4463babcfd",
+                            SecurityStamp = "93134723-36ff-4473-90f2-770e6ecdabc5",
                             TwoFactorEnabled = false,
                             UserName = "Admin@gmail.com"
                         });
