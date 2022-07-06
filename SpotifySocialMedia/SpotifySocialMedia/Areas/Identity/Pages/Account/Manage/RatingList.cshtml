@@ -1,0 +1,57 @@
+﻿@page
+@model SpotifySocialMedia.Areas.Identity.Pages.Account.Manage.RatingListModel
+
+@{
+  
+}
+
+@{
+    ViewData["Title"] = "Rating List";
+    ViewData["ActivePage"] = ManageNavPages.RatingList;
+}
+
+<h3>@ViewData["Title"]</h3>
+
+<div class="row">
+    <div class="col-md-6">
+        <table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model=>model.Input.Rate)
+            </th>
+         
+      
+            <th>
+                @Html.DisplayNameFor(model => model.Input.Song)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Input.Artist)
+                
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in @Model.GetData(@User.Claims.SingleOrDefault(x=>x.Type=="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value)) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rate)
+            </td>
+         
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.SongName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArtistName)
+            </td>
+            <td>
+                <a class="btn btn-primary" asp-action="Details" asp-controller="Song" asp-area="" asp-route-id="@item.SongId">See</a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+    </div>
+</div>
