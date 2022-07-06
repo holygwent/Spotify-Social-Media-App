@@ -59,7 +59,7 @@
                }
               else
               {
-            <h3 id="CommentsHeader"  >@Model.Comments.Count() Comments </h3>
+            <h3 id="CommentsHeader"  >Comments </h3>
             <ul id="CommentList"   class ="comment-list comment-top" list = "@Model.Comments" count="0">
                 @foreach(var comment in Model.Comments.Where(c =>c.Parent is null).OrderBy(c=>c.CreatedOn))
                 {
@@ -151,5 +151,8 @@
 <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/signalRFunctions.js" ></script>
 <script src="~/js/ratingSystem.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"/>
+
 
 
