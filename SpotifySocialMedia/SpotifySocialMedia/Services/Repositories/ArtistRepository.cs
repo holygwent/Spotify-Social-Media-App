@@ -28,7 +28,7 @@ namespace SpotifySocialMedia.Services.Repositories
             _databaseSpotifyTokenService = databaseSpotifyTokenService;
             _applicationDbContext = applicationDbContext;
         }
-        public async Task<string> AddArtist(string songId)
+        public async Task<SongInfo> AddArtist(string songId)
         {
              await _spotifyTokenService.CheckTokenExpireDate();
             string accessToken = _databaseSpotifyTokenService.GetToken().access_token;
@@ -38,21 +38,30 @@ namespace SpotifySocialMedia.Services.Repositories
             using var responseStream = await response.Content.ReadAsStreamAsync();
             var responseObject = await JsonSerializer.DeserializeAsync<SpotifySong>(responseStream);
             string artistId;
+            string songName;
+            songName = responseObject.name;
             artistId = responseObject.artists.FirstOrDefault().id;
-            if (artistId is not null)
+            if (artistId is not null )
             {
-                 response = await _httpClient.GetAsync($"artists/{artistId}");
-                response.EnsureSuccessStatusCode();
-                using var responseStream2 = await response.Content.ReadAsStreamAsync();
-                var responseObjectArtist = await JsonSerializer.DeserializeAsync<SpotifyArtist>(responseStream2);
-                string genres = "";
-                genres = String.Join(",", responseObjectArtist.genres);
+               
+              
+                    string artistName;
+                    response = await _httpClient.GetAsync($"artists/{artistId}");
+                    response.EnsureSuccessStatusCode();
+                    using var responseStream2 = await response.Content.ReadAsStreamAsync();
+                    var responseObjectArtist = await JsonSerializer.DeserializeAsync<SpotifyArtist>(responseStream2);
+                    artistName = responseObjectArtist.name;
+                    string genres = "";
+                    genres = String.Join(",", responseObjectArtist.genres);
 
-               var artist =  new Artist() { Id = responseObjectArtist.id, genres = genres };
-                await _applicationDbContext.Artists.AddAsync(artist);
-                return artistId;
+                    var artist = new Artist() { Id = responseObjectArtist.id, genres = genres, Name = artistName };
+                     if (_applicationDbContext.Artists.SingleOrDefault(x => x.Id == artistId) is null)
+                        await _applicationDbContext.Artists.AddAsync(artist);
+                    return new SongInfo() { ArtistId = artistId, SongName = songName };
+           
+               
             }
-            return "";
+            return new SongInfo();
 
         }
     }

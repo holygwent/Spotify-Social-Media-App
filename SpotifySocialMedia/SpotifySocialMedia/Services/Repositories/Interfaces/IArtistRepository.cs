@@ -1,7 +1,9 @@
-﻿namespace SpotifySocialMedia.Services.Repositories.Interfaces
+﻿using SpotifySocialMedia.Models;
+
+namespace SpotifySocialMedia.Services.Repositories.Interfaces
 {
     public interface IArtistRepository
     {
-        Task<string> AddArtist(string songId);
+        Task<SongInfo> AddArtist(string songId);
     }
 }
