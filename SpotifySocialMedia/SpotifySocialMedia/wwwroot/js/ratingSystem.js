@@ -6,49 +6,45 @@ $(".ratingStar").hover(function () {
     $(this).prevAll(".ratingStar").addClass("fas").removeClass("far");
 });
 
-$(".ratingStar").click(function () {
-    var starValue = $(this).attr("td-value");
-    $("#ratingValue").val(starValue);
-    SendRate(starValue);
-})
-
-function SendRate(starValue) {
-    let inputs = document.getElementById("rate").elements;
-    let user = inputs["userEmailRate"].value;
-    let songId = inputs["songIdRate"].value;
 
 
-    $.ajax({
-        url: `/Rate/AddRate?songId=${songId}&user=${user}&starValue=${starValue}`,
-        method: "GET",
-        success: function (data) {
+//function SendRate(starValue) {
+//    let inputs = document.getElementById("rate").elements;
+//    let user = inputs["userEmailRate"].value;
+//    let songId = inputs["songIdRate"].value;
+
+
+//    $.ajax({
+//        url: `/Rate/AddRate?songId=${songId}&user=${user}&starValue=${starValue}`,
+//        method: "GET",
+//        success: function (data) {
           
-            document.getElementById("averageValue").innerHTML = data.averageValue;
-            document.getElementById("NumberOfEvaluators").innerHTML = data.numberOfEvaluators;
-        },
-        error: function (err) {
-            console.log(err)
-        }
-    });
+//            document.getElementById("averageValue").innerHTML = data.averageValue;
+//            document.getElementById("NumberOfEvaluators").innerHTML = data.numberOfEvaluators;
+//        },
+//        error: function (err) {
+//            console.log(err)
+//        }
+//    });
 
-}
-setInterval(function () {
-    let songId = document.getElementById("SongId").getAttribute("alt");
+//}
+//setInterval(function () {
+//    let songId = document.getElementById("SongId").getAttribute("alt");
   
-    let slicedSongId = songId.replace("Song", "");
-    console.log(slicedSongId);
-    $.ajax({
-        url: `/Rate/GetAverageRate?songId=${slicedSongId}`,
-        method: "GET",
-        success: function (data) {
-            console.log(data);
-            document.getElementById("averageValue").innerHTML = data.averageValue;
-            document.getElementById("NumberOfEvaluators").innerHTML = data.numberOfEvaluators;
-        },
-        error: function (err) {
-            console.log(err)
-        }
-    });
+//    let slicedSongId = songId.replace("Song", "");
+//    console.log(slicedSongId);
+//    $.ajax({
+//        url: `/Rate/GetAverageRate?songId=${slicedSongId}`,
+//        method: "GET",
+//        success: function (data) {
+//            console.log(data);
+//            document.getElementById("averageValue").innerHTML = data.averageValue;
+//            document.getElementById("NumberOfEvaluators").innerHTML = data.numberOfEvaluators;
+//        },
+//        error: function (err) {
+//            console.log(err)
+//        }
+//    });
 
 
-}, 15000);
+//}, 15000);
