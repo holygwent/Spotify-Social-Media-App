@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SpotifySocialMedia.Data;
 
@@ -11,9 +12,10 @@ using SpotifySocialMedia.Data;
 namespace SpotifySocialMedia.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220706065044_addingNameColumnForArtist")]
+    partial class addingNameColumnForArtist
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -120,7 +122,8 @@ namespace SpotifySocialMedia.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ArtistId");
+                    b.HasIndex("ArtistId")
+                        .IsUnique();
 
                     b.ToTable("Songs");
                 });
@@ -262,16 +265,16 @@ namespace SpotifySocialMedia.Data.Migrations
                         {
                             Id = "8931ce67-348b-48b6-96fc-6fc47a74311e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9c4aa49f-b956-4f0c-93ec-bc266af21954",
+                            ConcurrencyStamp = "5d465562-6ffa-4e4d-9ff8-3809eee2201d",
                             Email = "Admin@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOVo2vCpgz4mcwxgx2ssLio30Tvn83PAhcHopH5emT+SBHXBv2r0lD0Tj6dis5CIsw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELgp+8F5uATnkOJURYvT6GpiNLbUUfxRE0+E73aDr+FnQ75WXkK+zbFAxlI6/LLMdA==",
                             PhoneNumber = "999111222",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "16b8ff71-f95f-4ee5-936f-e47de7f8794d",
+                            SecurityStamp = "ed90e8c0-951d-4baa-be9c-5a45b5669b26",
                             TwoFactorEnabled = false,
                             UserName = "Admin@gmail.com"
                         });
@@ -416,8 +419,8 @@ namespace SpotifySocialMedia.Data.Migrations
             modelBuilder.Entity("Database.Entities.Song", b =>
                 {
                     b.HasOne("Database.Entities.Artist", "Artist")
-                        .WithMany("Song")
-                        .HasForeignKey("ArtistId")
+                        .WithOne("Song")
+                        .HasForeignKey("Database.Entities.Song", "ArtistId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -477,7 +480,8 @@ namespace SpotifySocialMedia.Data.Migrations
 
             modelBuilder.Entity("Database.Entities.Artist", b =>
                 {
-                    b.Navigation("Song");
+                    b.Navigation("Song")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Database.Entities.Comment", b =>

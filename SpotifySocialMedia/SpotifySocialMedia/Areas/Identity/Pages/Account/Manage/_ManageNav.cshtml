@@ -3,6 +3,12 @@
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }
 <ul class="nav nav-pills flex-column">
+    <h6>User Data</h6>
+    <li class="nav-item"><a class="nav-link @ManageNavPages.RatingListNavClass(ViewContext)" id="RatingList" asp-page="./RatingList">Rating List</a></li>
+    <li class="nav-item"><a class="nav-link @ManageNavPages.NotificationListNavClass(ViewContext)" id="NotificationList" asp-page="./NotificationList">Notification List</a></li>
+    <li class="nav-item"><a class="nav-link @ManageNavPages.CommentedSongsListNavClass(ViewContext)" id="CommentedSongsList" asp-page="./CommentedSongsList">Commented Songs List</a></li>
+    <hr />
+    <h6>Settings</h6>
     <li class="nav-item"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Profile</a></li>
     <li class="nav-item"><a class="nav-link @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email">Email</a></li>
     <li class="nav-item"><a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Password</a></li>

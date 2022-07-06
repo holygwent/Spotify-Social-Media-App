@@ -5,7 +5,7 @@
 using System;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace  SpotifySocialMedia.Areas.Identity.Pages.Account.Manage
+namespace SpotifySocialMedia.Areas.Identity.Pages.Account.Manage
 {
     /// <summary>
     ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -13,6 +13,18 @@ namespace  SpotifySocialMedia.Areas.Identity.Pages.Account.Manage
     /// </summary>
     public static class ManageNavPages
     {
+        
+        public static string CommentedSongsList => "CommentedSongsList";
+
+        public static string CommentedSongsListNavClass(ViewContext viewContext) => PageNavClass(viewContext, CommentedSongsList);
+
+        public static string RatingList => "RatingList";
+
+        public static string RatingListNavClass(ViewContext viewContext) => PageNavClass(viewContext, NotificationList);
+
+        public static string NotificationList => "NotificationList";
+
+        public static string NotificationListNavClass(ViewContext viewContext) => PageNavClass(viewContext, NotificationList);
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
         ///     directly from your code. This API may change or be removed in future releases.

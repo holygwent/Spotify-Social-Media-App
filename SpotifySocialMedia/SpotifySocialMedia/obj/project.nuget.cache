@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "kp/FziAgwP2iotGJPlpVqUaWflJ1+U5UM+ylIQa+zfA/lBNMXAAgTB6ffBGt4iJHEZ0p2w+kNZnPWimWm+EUHA==",
+  "dgSpecHash": "ju92II5pwci4e/kxeHd0nryrduOEX1JIFoqUThkouRf8VQwIl60fIefPv52fpwqeMtAslCkaicRUyWaxnZSJ1A==",
   "success": true,
   "projectFilePath": "C:\\Users\\48502\\source\\repos\\Spotify-Social-Media-App\\SpotifySocialMedia\\SpotifySocialMedia\\SpotifySocialMedia.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\48502\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\48502\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
+    "C:\\Users\\48502\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\48502\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
     "C:\\Users\\48502\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\48502\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",

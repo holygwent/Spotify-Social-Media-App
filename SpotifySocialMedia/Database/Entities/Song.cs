@@ -11,6 +11,7 @@ namespace Database.Entities
     public class Song
     {
         public string Id { get; set; }
+        public string Name { get; set; }
         [Required]
         [ForeignKey("Artist")]
         public string ArtistId { get; set; }

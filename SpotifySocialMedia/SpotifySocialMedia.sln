@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpotifySocialMedia", "Spoti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpotifySocialMedia.SpotifyAuthorizationDataDatabase", "SpotifySocialMedia.SpotifySettingsDatabase\SpotifySocialMedia.SpotifyAuthorizationDataDatabase.csproj", "{54F23235-8510-4A58-9805-AA3E2B076902}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{26AB2020-59A8-4BD4-949E-84C49E64DF99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Database", "Database\Database.csproj", "{26AB2020-59A8-4BD4-949E-84C49E64DF99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

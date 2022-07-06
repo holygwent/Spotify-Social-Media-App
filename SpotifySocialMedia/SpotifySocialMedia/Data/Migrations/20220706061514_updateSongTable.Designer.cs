@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SpotifySocialMedia.Data;
 
@@ -11,9 +12,10 @@ using SpotifySocialMedia.Data;
 namespace SpotifySocialMedia.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220706061514_updateSongTable")]
+    partial class updateSongTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,10 +28,6 @@ namespace SpotifySocialMedia.Data.Migrations
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("genres")
                         .IsRequired()
@@ -120,7 +118,8 @@ namespace SpotifySocialMedia.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ArtistId");
+                    b.HasIndex("ArtistId")
+                        .IsUnique();
 
                     b.ToTable("Songs");
                 });
@@ -262,16 +261,16 @@ namespace SpotifySocialMedia.Data.Migrations
                         {
                             Id = "8931ce67-348b-48b6-96fc-6fc47a74311e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9c4aa49f-b956-4f0c-93ec-bc266af21954",
+                            ConcurrencyStamp = "603e9fa9-42d3-41d2-9b0c-fb9e40bdf6f3",
                             Email = "Admin@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOVo2vCpgz4mcwxgx2ssLio30Tvn83PAhcHopH5emT+SBHXBv2r0lD0Tj6dis5CIsw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECqKuJ3HQO6AcqDARg6Ygo6Z55YtOUbjXsRmYsMh662oob/lFwJ9kIeaSAieTveZYw==",
                             PhoneNumber = "999111222",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "16b8ff71-f95f-4ee5-936f-e47de7f8794d",
+                            SecurityStamp = "63797db5-1341-4141-be48-5feeab33f65e",
                             TwoFactorEnabled = false,
                             UserName = "Admin@gmail.com"
                         });
@@ -416,8 +415,8 @@ namespace SpotifySocialMedia.Data.Migrations
             modelBuilder.Entity("Database.Entities.Song", b =>
                 {
                     b.HasOne("Database.Entities.Artist", "Artist")
-                        .WithMany("Song")
-                        .HasForeignKey("ArtistId")
+                        .WithOne("Song")
+                        .HasForeignKey("Database.Entities.Song", "ArtistId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -477,7 +476,8 @@ namespace SpotifySocialMedia.Data.Migrations
 
             modelBuilder.Entity("Database.Entities.Artist", b =>
                 {
-                    b.Navigation("Song");
+                    b.Navigation("Song")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Database.Entities.Comment", b =>
