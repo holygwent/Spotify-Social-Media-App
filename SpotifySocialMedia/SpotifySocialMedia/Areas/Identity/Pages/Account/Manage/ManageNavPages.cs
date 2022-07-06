@@ -20,7 +20,7 @@ namespace SpotifySocialMedia.Areas.Identity.Pages.Account.Manage
 
         public static string RatingList => "RatingList";
 
-        public static string RatingListNavClass(ViewContext viewContext) => PageNavClass(viewContext, NotificationList);
+        public static string RatingListNavClass(ViewContext viewContext) => PageNavClass(viewContext, RatingList);
 
         public static string NotificationList => "NotificationList";
 

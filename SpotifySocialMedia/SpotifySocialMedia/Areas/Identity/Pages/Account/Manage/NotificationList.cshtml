@@ -11,46 +11,52 @@
 <h3>@ViewData["Title"]</h3>
 
 <div class="row">
-    dd
-   @* <div class="col-md-6">
+    
+    <div class="col-md-6">
+        <form method="post">
+            <input name="userId" type="hidden" value = "@User.Claims.SingleOrDefault(x=>x.Type=="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value"/>
+             <button  asp-page-handler="DeleteNotifications" type="submit" style="text-align:right; background-color:red;border-color:red;" class="btn btn-primary"  >Delete All</button>
+      </form>
+       
         <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model=>model.Input.Rate)
+                @Html.DisplayNameFor(model=>model.Input.SongName)
             </th>
          
       
             <th>
-                @Html.DisplayNameFor(model => model.Input.Song)
+                @Html.DisplayNameFor(model => model.Input.ArtistName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Input.Artist)
+                @Html.DisplayNameFor(model => model.Input.CreatedOn)
                 
             </th>
-            <th></th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in @Model.GetData(@User.Claims.SingleOrDefault(x=>x.Type=="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value)) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Rate)
+                @Html.DisplayFor(modelItem => item.SongName)
             </td>
          
            
             <td>
-                @Html.DisplayFor(modelItem => item.SongName)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.ArtistName)
             </td>
             <td>
-                <a class="btn btn-primary" asp-action="Details" asp-controller="Song" asp-area="" asp-route-id="@item.SongId">See</a> 
+                @Html.DisplayFor(modelItem => item.CreatedOn)
+            </td>
+            <td>
+                <a class="btn btn-primary" asp-action="Details" asp-controller="Song" asp-area="" asp-route-id="@item.SongId">See</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
-    </div>*@
+    </div>
 </div>
+
