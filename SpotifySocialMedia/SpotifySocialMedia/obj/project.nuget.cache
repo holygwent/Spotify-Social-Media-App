@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ii9eDA+qtj3pLEEh3pVkh4xJXkES8fXdMyVAMXvjA79m+zAu7GEt+UjcflOLPDp3WL3JMk0nENCZtEta1Adyag==",
+  "dgSpecHash": "3N8mIvnLusFY9wsWD3kFkpxDEwM9mtbqV/vNKra4o0q1Cjixj6Nog8gxup/vM2xd0yggaxjelZhNlPZmk5RjHQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\48502\\source\\repos\\PracaInzynierskaOstatecznaWersja\\Spotify-Social-Media-App\\SpotifySocialMedia\\SpotifySocialMedia\\SpotifySocialMedia.csproj",
   "expectedPackageFiles": [
@@ -17,6 +17,8 @@
     "C:\\Users\\48502\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\48502\\.nuget\\packages\\microsoft.aspnetcore.authentication.cookies\\2.2.0\\microsoft.aspnetcore.authentication.cookies.2.2.0.nupkg.sha512",
     "C:\\Users\\48502\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
+    "C:\\Users\\48502\\.nuget\\packages\\microsoft.aspnetcore.authentication.facebook\\6.0.13\\microsoft.aspnetcore.authentication.facebook.6.0.13.nupkg.sha512",
+    "C:\\Users\\48502\\.nuget\\packages\\microsoft.aspnetcore.authentication.google\\6.0.13\\microsoft.aspnetcore.authentication.google.6.0.13.nupkg.sha512",
     "C:\\Users\\48502\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.6\\microsoft.aspnetcore.cryptography.internal.6.0.6.nupkg.sha512",
     "C:\\Users\\48502\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.6\\microsoft.aspnetcore.cryptography.keyderivation.6.0.6.nupkg.sha512",
     "C:\\Users\\48502\\.nuget\\packages\\microsoft.aspnetcore.dataprotection\\2.2.0\\microsoft.aspnetcore.dataprotection.2.2.0.nupkg.sha512",

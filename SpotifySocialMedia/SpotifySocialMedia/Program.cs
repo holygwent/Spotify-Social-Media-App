@@ -11,6 +11,8 @@ using SpotifySocialMedia.SpotifySettingsDatabase;
 using SpotifySocialMedia.SpotifySettingsDatabase.Services;
 using System.Data;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Authentication.Facebook;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 //var connectionString = builder.Configuration.GetConnectionString("ApplicationDbContextConnection") ?? throw new InvalidOperationException("Connection string 'ApplicationDbContextConnection' not found.");
@@ -51,6 +53,12 @@ builder.Services.AddSingleton<IDatabaseSpotifyTokenService, DatabaseSpotifyToken
 //sendgrid
 builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
+//authentication external providers
+builder.Services.AddAuthentication().AddFacebook(options =>
+{
+    options.ClientId = "1311509396087379";
+    options.ClientSecret = "0be1244a29e45289342410a0b60b2bda";
+});
 
 //http clients
 builder.Services.AddHttpClient<ISpotifyTokenService, SpotifyTokenService>(c =>
@@ -89,7 +97,6 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
 app.UseAuthentication();
 app.UseAuthorization();
 

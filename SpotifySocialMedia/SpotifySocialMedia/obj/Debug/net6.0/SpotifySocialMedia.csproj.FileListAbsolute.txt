@@ -603,3 +603,5 @@ C:\Users\48502\source\repos\PracaInzynierskaOstatecznaWersja\Spotify-Social-Medi
 C:\Users\48502\source\repos\PracaInzynierskaOstatecznaWersja\Spotify-Social-Media-App\SpotifySocialMedia\SpotifySocialMedia\bin\Debug\net6.0\SendGrid.dll
 C:\Users\48502\source\repos\PracaInzynierskaOstatecznaWersja\Spotify-Social-Media-App\SpotifySocialMedia\SpotifySocialMedia\bin\Debug\net6.0\StarkbankEcdsa.dll
 C:\Users\48502\source\repos\PracaInzynierskaOstatecznaWersja\Spotify-Social-Media-App\SpotifySocialMedia\SpotifySocialMedia\bin\Debug\net6.0\Microsoft.AspNet.Identity.Core.dll
+C:\Users\48502\source\repos\PracaInzynierskaOstatecznaWersja\Spotify-Social-Media-App\SpotifySocialMedia\SpotifySocialMedia\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.Google.dll
+C:\Users\48502\source\repos\PracaInzynierskaOstatecznaWersja\Spotify-Social-Media-App\SpotifySocialMedia\SpotifySocialMedia\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.Facebook.dll
