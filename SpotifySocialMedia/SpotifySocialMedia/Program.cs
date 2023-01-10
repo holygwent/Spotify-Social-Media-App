@@ -10,6 +10,7 @@ using SpotifySocialMedia.Services.Repositories.Interfaces;
 using SpotifySocialMedia.SpotifySettingsDatabase;
 using SpotifySocialMedia.SpotifySettingsDatabase.Services;
 using System.Data;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 //var connectionString = builder.Configuration.GetConnectionString("ApplicationDbContextConnection") ?? throw new InvalidOperationException("Connection string 'ApplicationDbContextConnection' not found.");
@@ -47,6 +48,9 @@ builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
 //mongo services
 builder.Services.AddSingleton<IDatabaseAuthorizationCodeService, DatabaseAuthorizationCodeService>();
 builder.Services.AddSingleton<IDatabaseSpotifyTokenService, DatabaseSpotifyTokenService>();
+//sendgrid
+builder.Services.AddTransient<IEmailSender, EmailSender>();
+builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
 
 //http clients
 builder.Services.AddHttpClient<ISpotifyTokenService, SpotifyTokenService>(c =>
