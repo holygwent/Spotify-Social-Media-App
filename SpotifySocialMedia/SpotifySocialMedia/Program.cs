@@ -65,6 +65,10 @@ builder.Services.AddAuthentication().AddSpotify(options =>
     options.ClientId = builder.Configuration["Spotify:ClientId"];
     options.ClientSecret = builder.Configuration["Spotify:ClientSecret"];
     options.CallbackPath = "/Home";
+    options.Scope.Add("user-read-email user-read-private");
+    //options.SaveTokens = true;
+   
+   
 
 });
 //http clients
