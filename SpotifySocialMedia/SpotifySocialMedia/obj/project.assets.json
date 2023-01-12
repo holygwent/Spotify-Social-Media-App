@@ -2,6 +2,18 @@
   "version": 3,
   "targets": {
     "net6.0": {
+      "AspNet.Security.OAuth.Spotify/6.0.14": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/AspNet.Security.OAuth.Spotify.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/AspNet.Security.OAuth.Spotify.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "AutoMapper/11.0.1": {
         "type": "package",
         "dependencies": {
@@ -3788,6 +3800,20 @@
     }
   },
   "libraries": {
+    "AspNet.Security.OAuth.Spotify/6.0.14": {
+      "sha512": "uSynMbeZXlmGNQfFnQ7+M2Q4gilVcFyb00ptfUB0EBAm8m4nSaZ5EKyNQLhQtgIv7npD26+EBn6EP6wIdmFi4w==",
+      "type": "package",
+      "path": "aspnet.security.oauth.spotify/6.0.14",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "aspnet.security.oauth.spotify.6.0.14.nupkg.sha512",
+        "aspnet.security.oauth.spotify.nuspec",
+        "lib/net6.0/AspNet.Security.OAuth.Spotify.dll",
+        "lib/net6.0/AspNet.Security.OAuth.Spotify.xml"
+      ]
+    },
     "AutoMapper/11.0.1": {
       "sha512": "WIadGC1pIwbnyTubvI577p3F++Bsj9q2Q3OaAc1I0QS+JhupN1xkdrPBhI9bPIeg63zM81tZplUNYkqU1HE5jQ==",
       "type": "package",
@@ -11165,6 +11191,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "AspNet.Security.OAuth.Spotify >= 6.0.14",
       "AutoMapper >= 11.0.1",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 11.0.0",
       "Dapper >= 2.0.123",
@@ -11234,6 +11261,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "AspNet.Security.OAuth.Spotify": {
+            "target": "Package",
+            "version": "[6.0.14, )"
+          },
           "AutoMapper": {
             "target": "Package",
             "version": "[11.0.1, )"

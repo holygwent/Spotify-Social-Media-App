@@ -56,10 +56,17 @@ builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
 //authentication external providers
 builder.Services.AddAuthentication().AddFacebook(options =>
 {
-    options.ClientId = "1311509396087379";
-    options.ClientSecret = "0be1244a29e45289342410a0b60b2bda";
+    
+    options.ClientId = builder.Configuration["FacebookClientId"];
+    options.ClientSecret = builder.Configuration["FacebookClientSecret"];
 });
+builder.Services.AddAuthentication().AddSpotify(options =>
+{
+    options.ClientId = builder.Configuration["Spotify:ClientId"];
+    options.ClientSecret = builder.Configuration["Spotify:ClientSecret"];
+    options.CallbackPath = "/Home";
 
+});
 //http clients
 builder.Services.AddHttpClient<ISpotifyTokenService, SpotifyTokenService>(c =>
 {

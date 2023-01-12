@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "3N8mIvnLusFY9wsWD3kFkpxDEwM9mtbqV/vNKra4o0q1Cjixj6Nog8gxup/vM2xd0yggaxjelZhNlPZmk5RjHQ==",
+  "dgSpecHash": "jvodaJ4oEg7YtOmpnHmdK/KM1JQVUg8JrSmq3sKrRFJDynIhlg5J/mb+njNEym0m2IeESVQgIxIkuxOdB/kMaA==",
   "success": true,
   "projectFilePath": "C:\\Users\\48502\\source\\repos\\PracaInzynierskaOstatecznaWersja\\Spotify-Social-Media-App\\SpotifySocialMedia\\SpotifySocialMedia\\SpotifySocialMedia.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\48502\\.nuget\\packages\\aspnet.security.oauth.spotify\\6.0.14\\aspnet.security.oauth.spotify.6.0.14.nupkg.sha512",
     "C:\\Users\\48502\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\48502\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "C:\\Users\\48502\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",

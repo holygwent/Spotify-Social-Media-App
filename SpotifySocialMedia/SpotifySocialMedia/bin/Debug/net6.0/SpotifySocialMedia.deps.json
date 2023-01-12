@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "SpotifySocialMedia/1.0.0": {
         "dependencies": {
+          "AspNet.Security.OAuth.Spotify": "6.0.14",
           "AutoMapper": "11.0.1",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "11.0.0",
           "Dapper": "2.0.123",
@@ -27,6 +28,14 @@
         },
         "runtime": {
           "SpotifySocialMedia.dll": {}
+        }
+      },
+      "AspNet.Security.OAuth.Spotify/6.0.14": {
+        "runtime": {
+          "lib/net6.0/AspNet.Security.OAuth.Spotify.dll": {
+            "assemblyVersion": "6.0.14.0",
+            "fileVersion": "6.0.1422.55262"
+          }
         }
       },
       "AutoMapper/11.0.1": {
@@ -2709,6 +2718,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "AspNet.Security.OAuth.Spotify/6.0.14": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uSynMbeZXlmGNQfFnQ7+M2Q4gilVcFyb00ptfUB0EBAm8m4nSaZ5EKyNQLhQtgIv7npD26+EBn6EP6wIdmFi4w==",
+      "path": "aspnet.security.oauth.spotify/6.0.14",
+      "hashPath": "aspnet.security.oauth.spotify.6.0.14.nupkg.sha512"
     },
     "AutoMapper/11.0.1": {
       "type": "package",
