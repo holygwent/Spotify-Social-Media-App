@@ -52,7 +52,7 @@ namespace SpotifySocialMedia.Services.Repositories
 
             if (numberOfEvaluators !=0)
             {
-                averageValue = averageValue / numberOfEvaluators;
+                averageValue =Math.Round( averageValue / numberOfEvaluators,2);
             }
             else
             {

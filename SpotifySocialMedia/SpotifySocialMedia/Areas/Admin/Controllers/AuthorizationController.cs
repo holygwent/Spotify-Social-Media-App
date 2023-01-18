@@ -33,7 +33,7 @@ namespace SpotifySocialMedia.Areas.Admin.Controllers
         [Route("Home")]
         public IActionResult Home()
         {
-            return Ok("git");
+            return Ok("Działa");
         }
 
         [Route("NewToken")]

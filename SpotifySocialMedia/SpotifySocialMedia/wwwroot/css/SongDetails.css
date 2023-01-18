@@ -18,8 +18,13 @@
 .comment-list {
     list-style-type: none;
     margin-top: 20px;
-}
 
+}
+.form-group textarea {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
 .comment-replies {
     display: none;
 }
@@ -38,7 +43,7 @@
 
     .comment-body p {
         margin-top: 0;
-        width: 50vw;
+        width: 90%;
         overflow-wrap: break-word;
     }
 
@@ -59,7 +64,11 @@
     }
 
 #CommentSong textarea {
-    width: 50vw;
+    margin-left:auto;
+    margin-right:auto;
+    width:90%;
+
+
 }
 
 .change {
