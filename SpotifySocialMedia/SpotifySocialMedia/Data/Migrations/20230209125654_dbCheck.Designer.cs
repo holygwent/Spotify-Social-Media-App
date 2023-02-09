@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SpotifySocialMedia.Data;
 
@@ -11,9 +12,10 @@ using SpotifySocialMedia.Data;
 namespace SpotifySocialMedia.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230209125654_dbCheck")]
+    partial class dbCheck
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,11 +29,11 @@ namespace SpotifySocialMedia.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Genres")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("genres")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -292,16 +294,16 @@ namespace SpotifySocialMedia.Data.Migrations
                         {
                             Id = "8931ce67-348b-48b6-96fc-6fc47a74311e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f6395a47-93a5-45f8-9553-a2aec138ad03",
+                            ConcurrencyStamp = "0c2f39a3-841d-45c0-b8a7-31d1d845d8ac",
                             Email = "Admin@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOPU6D1aZjihK67eXw8vhk/MXbFgtumkDFvzWxGKLll3WPGeq7iLghAYu0whJfjqRg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELl4qT3HDXrvA28PKFVvM82OQ1jJxC6zwTY7WiX1oM/rFuUGbhVQqbjQWBpVVSSZFA==",
                             PhoneNumber = "999111222",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "e62079db-fa5e-43c1-b1b2-f822a8c04d47",
+                            SecurityStamp = "f5e35ef0-5494-43b4-9e86-a8ff72c71764",
                             TwoFactorEnabled = false,
                             UserName = "Admin@gmail.com"
                         });

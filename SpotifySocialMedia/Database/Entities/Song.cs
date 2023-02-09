@@ -18,8 +18,6 @@ namespace Database.Entities
         public virtual IEnumerable<Rate> Rates { get; set; }
         public virtual IEnumerable<Comment> Comments { get; set; }
         public virtual Artist Artist { get; set; }
-        public virtual IEnumerable<Notification> Notifications { get; set; }
-       
-        
+        public virtual IEnumerable<Notification> Notifications { get; set; }   
     }
 }

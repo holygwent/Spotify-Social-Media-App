@@ -54,7 +54,7 @@ namespace SpotifySocialMedia.Services.Repositories
                     string genres = "";
                     genres = String.Join(",", responseObjectArtist.genres);
 
-                    var artist = new Artist() { Id = responseObjectArtist.id, genres = genres, Name = artistName };
+                    var artist = new Artist() { Id = responseObjectArtist.id, Genres = genres, Name = artistName };
                      if (_applicationDbContext.Artists.SingleOrDefault(x => x.Id == artistId) is null)
                         await _applicationDbContext.Artists.AddAsync(artist);
                     return new SongInfo() { ArtistId = artistId, SongName = songName };

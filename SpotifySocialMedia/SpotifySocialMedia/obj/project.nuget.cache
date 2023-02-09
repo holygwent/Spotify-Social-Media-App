@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "grN7jKY2cca1Cye0X6WvBXowVG8aNAjUF+yI32MdO5nEY4YBapZmrnfKrfCmL1m7ZZBEnL4+McI81mW/VMpcHw==",
+  "dgSpecHash": "YIE+8Te3J0RBvgWKmMY5La8eeTmUVw2+B80z18Kq6rpMvAuD4db9mjGO264Q7JPOW0rHULTJwOzhvQO03wLbaQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\48502\\source\\repos\\pracaInzynierksaSkonczona\\Spotify-Social-Media-App\\SpotifySocialMedia\\SpotifySocialMedia\\SpotifySocialMedia.csproj",
+  "projectFilePath": "C:\\Users\\48502\\source\\repos\\PracaInzynierskaSkonczonaPoPoprawkachWizualnych\\Spotify-Social-Media-App\\SpotifySocialMedia\\SpotifySocialMedia\\SpotifySocialMedia.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\48502\\.nuget\\packages\\aspnet.security.oauth.spotify\\6.0.14\\aspnet.security.oauth.spotify.6.0.14.nupkg.sha512",
     "C:\\Users\\48502\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",

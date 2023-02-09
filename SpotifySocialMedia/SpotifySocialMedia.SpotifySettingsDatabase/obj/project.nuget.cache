@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AoZ3ayI6VjgqB17SaxGTfVkQdM/BBcs2Rrp0UedqMFzDmewB4ABW+JrbnQf2uLBd0EW06XkSIQ43/hQPvFf0gQ==",
+  "dgSpecHash": "2z3RAdwzkD+JQRMVDDeBMMxPTEXuGlhHgryQHVO+e3rhMN3hKkLLdV+33H2FL0/GfpeiVlNsThLKKTWs1ewYOA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\48502\\source\\repos\\pracaInzynierksaSkonczona\\Spotify-Social-Media-App\\SpotifySocialMedia\\SpotifySocialMedia.SpotifySettingsDatabase\\SpotifySocialMedia.SpotifyAuthorizationDataDatabase.csproj",
+  "projectFilePath": "C:\\Users\\48502\\source\\repos\\PracaInzynierskaSkonczonaPoPoprawkachWizualnych\\Spotify-Social-Media-App\\SpotifySocialMedia\\SpotifySocialMedia.SpotifySettingsDatabase\\SpotifySocialMedia.SpotifyAuthorizationDataDatabase.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\48502\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
     "C:\\Users\\48502\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",

@@ -739,11 +739,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\48502\\source\\repos\\pracaInzynierksaSkonczona\\Spotify-Social-Media-App\\SpotifySocialMedia\\SpotifySocialMedia.SpotifySettingsDatabase\\SpotifySocialMedia.SpotifyAuthorizationDataDatabase.csproj",
+      "projectUniqueName": "C:\\Users\\48502\\source\\repos\\PracaInzynierskaSkonczonaPoPoprawkachWizualnych\\Spotify-Social-Media-App\\SpotifySocialMedia\\SpotifySocialMedia.SpotifySettingsDatabase\\SpotifySocialMedia.SpotifyAuthorizationDataDatabase.csproj",
       "projectName": "SpotifySocialMedia.SpotifyAuthorizationDataDatabase",
-      "projectPath": "C:\\Users\\48502\\source\\repos\\pracaInzynierksaSkonczona\\Spotify-Social-Media-App\\SpotifySocialMedia\\SpotifySocialMedia.SpotifySettingsDatabase\\SpotifySocialMedia.SpotifyAuthorizationDataDatabase.csproj",
+      "projectPath": "C:\\Users\\48502\\source\\repos\\PracaInzynierskaSkonczonaPoPoprawkachWizualnych\\Spotify-Social-Media-App\\SpotifySocialMedia\\SpotifySocialMedia.SpotifySettingsDatabase\\SpotifySocialMedia.SpotifyAuthorizationDataDatabase.csproj",
       "packagesPath": "C:\\Users\\48502\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\48502\\source\\repos\\pracaInzynierksaSkonczona\\Spotify-Social-Media-App\\SpotifySocialMedia\\SpotifySocialMedia.SpotifySettingsDatabase\\obj\\",
+      "outputPath": "C:\\Users\\48502\\source\\repos\\PracaInzynierskaSkonczonaPoPoprawkachWizualnych\\Spotify-Social-Media-App\\SpotifySocialMedia\\SpotifySocialMedia.SpotifySettingsDatabase\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

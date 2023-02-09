@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Database.Entities
 {
-    public  class Notification
+    public class Notification
     {
         public Guid Id { get; set; }
         public string Communicat { get; set; }
@@ -20,9 +20,7 @@ namespace Database.Entities
         [ForeignKey("User")]
         public string UserId { get; set; }
         public DateTime AddedOn { get; set; }
-
         public virtual Song Song { get; set; }
         public virtual IdentityUser User { get; set; }
-
     }
 }

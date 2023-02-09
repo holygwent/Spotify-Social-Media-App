@@ -11,7 +11,6 @@ namespace Database.Entities
 {
     public class Comment
     {
-       
         public string Id { get; set; }
         [Required]
         [ForeignKey("Song")]
