@@ -11,6 +11,7 @@ namespace Database.Entities
         public string Id { get; set; }
         public string  Name { get; set; }
         public string genres { get; set; }
+        
         public virtual IEnumerable<Song> Song { get; set; }
     }
 }
