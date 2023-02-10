@@ -17,7 +17,6 @@ namespace SpotifySocialMedia.Services.Repositories
         private readonly ApplicationDbContext _dbContext;
         private readonly IMapper _mapper;
         private readonly IArtistRepository _artistRepository;
-
         public SongRepository(ApplicationDbContext dbContext, IMapper mapper,
              IArtistRepository artistRepository)
         {
@@ -29,10 +28,7 @@ namespace SpotifySocialMedia.Services.Repositories
         public async Task CreateSong(string songId)
         {
             var songInfo = _artistRepository.AddArtist(songId).Result;
-
-
             await _dbContext.Songs.AddAsync(new Song { Id = songId, ArtistId = songInfo.ArtistId, Name = songInfo.SongName });
-
             await _dbContext.SaveChangesAsync();
         }
         public async Task<Song> GetSong(string songId)
@@ -43,10 +39,7 @@ namespace SpotifySocialMedia.Services.Repositories
                 .Include(x => x.Comments)
                      .ThenInclude(x => x.Comments)
                 .FirstOrDefaultAsync(x => x.Id == songId);
-
             return song;
         }
-
-
     }
 }

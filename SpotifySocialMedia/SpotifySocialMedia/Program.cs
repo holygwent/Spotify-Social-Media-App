@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using SpotifySocialMedia.Areas.Admin.Services;
 using SpotifySocialMedia.Data;
 using SpotifySocialMedia.Hubs;
-using SpotifySocialMedia.Services;
 using SpotifySocialMedia.Services.Repositories;
 using SpotifySocialMedia.Services.Repositories.Interfaces;
 using SpotifySocialMedia.SpotifySettingsDatabase;
@@ -13,6 +12,8 @@ using System.Data;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Authentication.Facebook;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using SpotifySocialMedia.Models;
+using SpotifySocialMedia.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 //var connectionString = builder.Configuration.GetConnectionString("ApplicationDbContextConnection") ?? throw new InvalidOperationException("Connection string 'ApplicationDbContextConnection' not found.");

@@ -1,4 +1,4 @@
-﻿namespace SpotifySocialMedia.Services
+﻿namespace SpotifySocialMedia.Models
 {
     public class AuthMessageSenderOptions
     {
