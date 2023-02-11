@@ -8,144 +8,122 @@
     
 
 }
-
-
 <div class="container">
     <div  class="row" >
        <div class="col-sm-12">
            <form id="rate">
-                    @if(User.Identity.IsAuthenticated)
+                 @if(User.Identity.IsAuthenticated)
                 {
                    <input  type ="hidden" name="userEmailRate"  value="@User.Claims.SingleOrDefault(x=>x.Type=="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress").Value" />
-
                 }
                 else
                 {
-                   <input  type ="hidden" name="userEmailRate"  value="" />
-
+                     <input  type ="hidden" name="userEmailRate"  value="" />
                 }
                <input  type ="hidden" name="songIdRate" value="@(Model.Id)" />
                <h2> 
-                       <span class="RatingStatistics">
-                          <i class="fa-solid fa-star"></i>
-                         <span id="averageValue"> @ViewBag.AverageRate.AverageValue  </span>
-                          <i class="fa-solid fa-user"></i>
-                         <span id="NumberOfEvaluators">  @ViewBag.AverageRate.NumberOfEvaluators </span>
-                      </span>
-
-                        <span class="Stars">
+                    <span class="RatingStatistics">
+                        <i class="fa-solid fa-star"></i>
+                        <span id="averageValue"> @ViewBag.AverageRate.AverageValue  </span>
+                        <i class="fa-solid fa-user"></i>
+                        <span id="NumberOfEvaluators">  @ViewBag.AverageRate.NumberOfEvaluators </span>
+                    </span>
+                    <span class="Stars">
                         <i class="ratingStar far fa-star" td-value="1"></i>
                         <i class="ratingStar far fa-star" td-value="2"></i>
                         <i class="ratingStar far fa-star" td-value="3"></i>
                         <i class="ratingStar far fa-star" td-value="4"></i>
                         <i class="ratingStar far fa-star" td-value="5"></i>
-                        </span>
-
-                        <input  type ="hidden" name="Rating" id="ratingValue" />
-
+                    </span>
+                    <input  type ="hidden" name="Rating" id="ratingValue" />
                 </h2>
           </form>
         </div>
     </div>
     <div class="align-content-center">
-    <iframe id="SongId" alt="Song@(Model.Id)"  style="border-radius:12px" src="https://open.spotify.com/embed/track/@(Model.Id)?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+        <iframe id="SongId" alt="Song@(Model.Id)"  style="border-radius:12px" src="https://open.spotify.com/embed/track/@(Model.Id)?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
     </div>
     <div class="row mt-5">
         <div class="col-lg-8 col-md-10 mx-auto">
               @if(!User.Identity.IsAuthenticated)
                {
-                <a  class="btn-primary btn"  asp-area="Identity" asp-page="/Account/Login" asp-route-ReturnUrl="@(returnUrl)"><h3>Login to comment this song</h3></a>
-
+                 <a  class="btn-primary btn"  asp-area="Identity" asp-page="/Account/Login" asp-route-ReturnUrl="@(returnUrl)"><h3>Login to comment this song</h3></a>
                }
               else
               {
-            <h3 id="CommentsHeader"  >Comments </h3>
-            <ul id="CommentList"   class ="comment-list comment-top" list = "@Model.Comments" count="0">
-                @foreach(var comment in Model.Comments.Where(c =>c.Parent is null).OrderBy(c=>c.CreatedOn))
-                {
-                    <li class="comment-item">
-                        <div class="comment-body">
-                            <h5 class="commenter-name">@comment.Author.UserName</h5>
-                            <div class="comment-date">@comment.CreatedOn.ToShortDateString() @comment.CreatedOn.ToShortTimeString()</div>
-                            <p class="comment-message">@comment.Content</p>
-                            @if(!User.Identity.IsAuthenticated)
-                            {
-                                <a  asp-area="Identity" class="btn-primary btn" asp-page="/Account/Login" asp-route-ReturnUrl="@(returnUrl)">Login to show replies</a>
-                            }
-                            else
-                            {
-
-                                 <b alt="@(comment.Id)"  onclick="showReplies(this)"  class="btn-primary btn">Show replies</b>                         
-
-                            }
-                        </div>
-                        <ul class="comment-list comment-replies " id="@(comment.Id)" list="@comment.Comments" counts="0" style="margin-left:30px;top:0;">
-                            @foreach(var reply in comment.Comments.OrderBy(c=>c.CreatedOn))
-                            {
-                             <li class ="comment" >
-                                <div class="comment-body">
-                                     <h5 class="commenter-name">@reply.Author.UserName</h5>
-                                    <div class="comment-date">@reply.CreatedOn.ToShortDateString() @reply.CreatedOn.ToShortTimeString()</div>
-                                     <p class="comment-message">@reply.Content</p>
-                                </div>
-                            </li>
-                            }
-                          @if(User.Identity.IsAuthenticated)
-                            {
-                                
-                                     <form id="replyForm@(comment.Id)">
-                                      <input type="hidden" name="ReplySongId" value="@Model.Id">
-                                      <input type="hidden" name="ReplyParent" value="@(comment.Id)">
-                                       <div class="form-group">
-                                         <h6>Reply</h6>
-                                         <textarea  name="ReplyMessage"></textarea>
-                                     </div>
-                                      <b alt="replyForm@(comment.Id)"  class="btn btn-primary" onclick="sendReply(this)">Send</b>
-                                    </form>
-
-
-                                
-
-                            }
-                        </ul>
-
-
-                    </li>
-                }
-            </ul>
-            <div id="CommentSong">
-            @if(User.Identity.IsAuthenticated)
-            {
-             @*   clamims 
-                http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier
-                http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name
-                http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress*@
-                <form id="commentForm">
-                  <input type="hidden"  name="AuthorEmail" value="@User.Claims.SingleOrDefault(x=>x.Type=="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress").Value">
-                  <input type="hidden" name="songId" value="@Model.Id">
-                  <input type="hidden" name="parent" value="null">
-                    <div class="form-group">
-                         <h6>Comment</h6>
-                         <textarea  name="msg"></textarea>
-                    </div>
-                   <b class="btn btn-primary" onclick="send()">Send</b>
-                </form>
-            }
-            else
-            {
-                <a  class="btn-primary btn"  asp-area="Identity" asp-page="/Account/Login" asp-route-ReturnUrl="@(returnUrl)">Login to comment this song</a>
-
-            }
-
-
-            </div>
+                <h3 id="CommentsHeader"  >Comments </h3>
+                <ul id="CommentList"   class ="comment-list comment-top" list = "@Model.Comments" count="0">
+                    @foreach(var comment in Model.Comments.Where(c =>c.Parent is null).OrderBy(c=>c.CreatedOn))
+                    {
+                        <li class="comment-item">
+                            <div class="comment-body">
+                                <h5 class="commenter-name">@comment.Author.UserName</h5>
+                                <div class="comment-date">@comment.CreatedOn.ToShortDateString() @comment.CreatedOn.ToShortTimeString()</div>
+                                <p class="comment-message">@comment.Content</p>
+                                @if(!User.Identity.IsAuthenticated)
+                                {
+                                    <a  asp-area="Identity" class="btn-primary btn" asp-page="/Account/Login" asp-route-ReturnUrl="@(returnUrl)">Login to show replies</a>
+                                }
+                                else
+                                {
+                                     <b alt="@(comment.Id)"  onclick="showReplies(this)"  class="btn-primary btn">Show replies</b>                         
+                                }
+                            </div>
+                            <ul class="comment-list comment-replies " id="@(comment.Id)" list="@comment.Comments" counts="0" style="margin-left:30px;top:0;">
+                                @foreach(var reply in comment.Comments.OrderBy(c=>c.CreatedOn))
+                                {
+                                 <li class ="comment" >
+                                    <div class="comment-body">
+                                        <h5 class="commenter-name">@reply.Author.UserName</h5>
+                                        <div class="comment-date">@reply.CreatedOn.ToShortDateString() @reply.CreatedOn.ToShortTimeString()</div>
+                                        <p class="comment-message">@reply.Content</p>
+                                    </div>
+                                </li>
+                                }
+                              @if(User.Identity.IsAuthenticated)
+                                {
+                                <form id="replyForm@(comment.Id)">
+                                   <input type="hidden" name="ReplySongId" value="@Model.Id">
+                                   <input type="hidden" name="ReplyParent" value="@(comment.Id)">
+                                   <div class="form-group">
+                                        <h6>Reply</h6>
+                                        <textarea  name="ReplyMessage"></textarea>
+                                   </div>
+                                   <b alt="replyForm@(comment.Id)"  class="btn btn-primary" onclick="sendReply(this)">Send</b>
+                                 </form>
+                                }
+                            </ul>
+                        </li>
+                    }
+                </ul>
+                <div id="CommentSong">
+                    @if(User.Identity.IsAuthenticated)
+                    {
+                     @*   clamims 
+                        http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier
+                        http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name
+                        http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress*@
+                        <form id="commentForm">
+                          <input type="hidden"  name="AuthorEmail" value="@User.Claims.SingleOrDefault(x=>x.Type=="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress").Value">
+                          <input type="hidden" name="songId" value="@Model.Id">
+                          <input type="hidden" name="parent" value="null">
+                          <div class="form-group">
+                                 <h6>Comment</h6>
+                                 <textarea  name="msg"></textarea>
+                          </div>
+                          <b class="btn btn-primary" onclick="send()">Send</b>
+                        </form>
+                    }
+                    else
+                    {
+                        <a  class="btn-primary btn"  asp-area="Identity" asp-page="/Account/Login" asp-route-ReturnUrl="@(returnUrl)">Login to comment this song</a>
+                    }
+                </div>
              }
         </div>
        
     </div>
 </div>
-
-
 
 <script src="~/lib//jquery/jquery.js"></script>
 <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
@@ -153,6 +131,3 @@
 <script src="~/js/ratingSystem.js" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"/>
-
-
-
