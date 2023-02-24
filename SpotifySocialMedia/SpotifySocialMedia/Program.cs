@@ -52,7 +52,7 @@ builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
 builder.Services.AddSingleton<IDatabaseAuthorizationCodeService, DatabaseAuthorizationCodeService>();
 builder.Services.AddSingleton<IDatabaseSpotifyTokenService, DatabaseSpotifyTokenService>();
 //sendgrid
-builder.Services.AddTransient<IEmailSender, EmailSender>();
+builder.Services.AddTransient<IEmailSender, EmailSenderService>();
 builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
 //authentication external providers
 builder.Services.AddAuthentication().AddFacebook(options =>

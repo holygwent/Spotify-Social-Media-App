@@ -10,9 +10,9 @@ using System.Web;
 
 namespace SpotifySocialMedia.Services
 {
-    public class EmailSender: IEmailSender
+    public class EmailSenderService: IEmailSender
     {
-        public EmailSender(IOptions<AuthMessageSenderOptions> optionsAccessor)
+        public EmailSenderService(IOptions<AuthMessageSenderOptions> optionsAccessor)
         {
             Options = optionsAccessor.Value;
         }
