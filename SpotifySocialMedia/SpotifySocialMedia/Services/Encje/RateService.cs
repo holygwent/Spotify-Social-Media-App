@@ -7,12 +7,12 @@ using SpotifySocialMedia.Services.Repositories.Interfaces;
 
 namespace SpotifySocialMedia.Services.Repositories
 {
-    public class RateRepository:IRateRepository
+    public class RateService:IRateService
     {
 
         private readonly ApplicationDbContext _dbContext;
         private readonly UserManager<IdentityUser> _userManager;
-        public RateRepository(ApplicationDbContext dbContext,UserManager<IdentityUser> userManager)
+        public RateService(ApplicationDbContext dbContext,UserManager<IdentityUser> userManager)
         {
             _dbContext = dbContext;
             _userManager = userManager;

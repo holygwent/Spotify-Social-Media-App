@@ -12,13 +12,13 @@ using System.Threading.Tasks;
 
 namespace SpotifySocialMedia.Services.Repositories
 {
-    internal class SongRepository : ISongRepository
+    internal class SongService : ISongService
     {
         private readonly ApplicationDbContext _dbContext;
         private readonly IMapper _mapper;
-        private readonly IArtistRepository _artistRepository;
-        public SongRepository(ApplicationDbContext dbContext, IMapper mapper,
-             IArtistRepository artistRepository)
+        private readonly IArtistService _artistRepository;
+        public SongService(ApplicationDbContext dbContext, IMapper mapper,
+             IArtistService artistRepository)
         {
             _dbContext = dbContext;
             _mapper = mapper;

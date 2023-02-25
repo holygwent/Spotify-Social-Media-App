@@ -2,7 +2,7 @@
 
 namespace SpotifySocialMedia.Services.Repositories.Interfaces
 {
-    public interface INotificationRepository
+    public interface INotificationService
     {
         List<NotificationDbo> GetUserNotifications(string userId);
         Task DeleteNotifications(string userId);

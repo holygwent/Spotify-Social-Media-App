@@ -6,9 +6,9 @@ namespace SpotifySocialMedia.Controllers
 {
     public class RateController : Controller
     {
-        private readonly IRateRepository _rateRepository;
+        private readonly IRateService _rateRepository;
 
-        public RateController(IRateRepository rateRepository)
+        public RateController(IRateService rateRepository)
         {
             _rateRepository = rateRepository;
         }

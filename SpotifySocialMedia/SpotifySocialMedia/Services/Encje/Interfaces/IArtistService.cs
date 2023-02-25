@@ -2,7 +2,7 @@
 
 namespace SpotifySocialMedia.Services.Repositories.Interfaces
 {
-    public interface IArtistRepository
+    public interface IArtistService
     {
         Task<SongInfo> AddArtist(string songId);
     }

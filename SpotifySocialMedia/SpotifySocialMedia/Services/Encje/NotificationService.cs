@@ -7,12 +7,12 @@ using System.Data;
 
 namespace SpotifySocialMedia.Services.Repositories
 {
-    public class NotificationRepository : INotificationRepository
+    public class NotificationService : INotificationService
     {
         private readonly ApplicationDbContext _dbContext;
         private readonly IDbConnection _dbConnection;
 
-        public NotificationRepository(ApplicationDbContext dbContext, IDbConnection dbConnection)
+        public NotificationService(ApplicationDbContext dbContext, IDbConnection dbConnection)
         {
             _dbContext = dbContext;
             _dbConnection = dbConnection;

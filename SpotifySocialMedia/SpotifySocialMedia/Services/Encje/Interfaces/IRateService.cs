@@ -2,7 +2,7 @@
 
 namespace SpotifySocialMedia.Services.Repositories.Interfaces
 {
-    public interface IRateRepository
+    public interface IRateService
     {
         Task Add(string songId, string userEmail, int rate);
         Task<AverageRate> GetAverageRate(string songId);

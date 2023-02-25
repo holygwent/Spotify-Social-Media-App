@@ -42,12 +42,12 @@ builder.Services.Configure<MongoDatabaseSettings>(builder.Configuration.GetSecti
 builder.Services.AddScoped<IAuthorizeService, AuthorizeService>();
 builder.Services.AddScoped<ISpotifyTokenService, SpotifyTokenService>();
 builder.Services.AddScoped<ISearchService , SearchService>();
-builder.Services.AddScoped<ISongRepository , SongRepository>();
-builder.Services.AddScoped<ICommentRepository , CommentRepository>();
-builder.Services.AddScoped<IRateRepository , RateRepository>();
-builder.Services.AddScoped<IArtistRepository , ArtistRepository>();
+builder.Services.AddScoped<ISongService , SongService>();
+builder.Services.AddScoped<ICommentService , CommentService>();
+builder.Services.AddScoped<IRateService , RateService>();
+builder.Services.AddScoped<IArtistService , ArtistService>();
 builder.Services.AddScoped<IUserInformationService, UserInformationService>();
-builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
+builder.Services.AddScoped<INotificationService, NotificationService>();
 //mongo services
 builder.Services.AddSingleton<IDatabaseAuthorizationCodeService, DatabaseAuthorizationCodeService>();
 builder.Services.AddSingleton<IDatabaseSpotifyTokenService, DatabaseSpotifyTokenService>();
@@ -84,7 +84,7 @@ builder.Services.AddHttpClient<ISearchService, SearchService>(c =>
     c.DefaultRequestHeaders.Add("Accept", "application/.json");
     
 });
-builder.Services.AddHttpClient<IArtistRepository, ArtistRepository>(c =>
+builder.Services.AddHttpClient<IArtistService, ArtistService>(c =>
 {
     c.BaseAddress = new Uri("https://api.spotify.com/v1/");
     c.DefaultRequestHeaders.Add("Accept", "application/.json");

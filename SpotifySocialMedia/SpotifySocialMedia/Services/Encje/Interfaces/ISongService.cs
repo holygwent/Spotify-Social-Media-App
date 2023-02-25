@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SpotifySocialMedia.Services.Repositories.Interfaces
 {
-    public interface ISongRepository
+    public interface ISongService
     {
         Task CreateSong(string songId);
         Task<Song> GetSong(string songId);

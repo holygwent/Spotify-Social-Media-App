@@ -10,13 +10,13 @@ namespace SpotifySocialMedia.Controllers
     public class SongController : Controller
     {
         private readonly ISearchService _searchService;
-        private readonly ISongRepository _songRepository;
-        private readonly IRateRepository _rateRepository;
+        private readonly ISongService _songRepository;
+        private readonly IRateService _rateRepository;
         
 
         public SongController(ISearchService searchService
-            , ISongRepository songRepository
-            , IRateRepository rateRepository
+            , ISongService songRepository
+            , IRateService rateRepository
            )
         {
             _searchService = searchService;

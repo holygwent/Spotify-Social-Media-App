@@ -12,12 +12,12 @@ using System.Threading.Tasks;
 
 namespace SpotifySocialMedia.Services.Repositories
 {
-    public class CommentRepository: ICommentRepository
+    public class CommentService: ICommentService
     {
         private readonly ApplicationDbContext _dbContext;
         private readonly UserManager<IdentityUser> _userManager;
 
-        public CommentRepository(ApplicationDbContext dbContext,UserManager<IdentityUser> userManager)
+        public CommentService(ApplicationDbContext dbContext,UserManager<IdentityUser> userManager)
         {
             _dbContext = dbContext;
             _userManager = userManager;

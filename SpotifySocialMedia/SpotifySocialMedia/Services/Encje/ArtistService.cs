@@ -9,7 +9,7 @@ using System.Text.Json;
 
 namespace SpotifySocialMedia.Services.Repositories
 {
-    public class ArtistRepository: IArtistRepository
+    public class ArtistService: IArtistService
     {
         private readonly HttpClient _httpClient;
         private readonly ISpotifyTokenService _spotifyTokenService;
@@ -17,7 +17,7 @@ namespace SpotifySocialMedia.Services.Repositories
         private readonly ApplicationDbContext _applicationDbContext;
 
 
-        public ArtistRepository(HttpClient httpClient
+        public ArtistService(HttpClient httpClient
          , ISpotifyTokenService spotifyTokenService
           , IDatabaseSpotifyTokenService databaseSpotifyTokenService
           ,ApplicationDbContext  applicationDbContext )

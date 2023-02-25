@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xCIkbJpgn54XB5hJj2/l6OphbbFBfQ/b7dvvNwJqL1x7jAgFxRr7I9ifM++rkQGBmzVSWZtokCqAEfowyDflWw==",
+  "dgSpecHash": "ixjg0AV1EUeqAGVEzQ7J56NIIfN4YDOyTp77as9dlhS8e76JbxB8Qpamh2T8ucXWxX6mk+phtgZFNEC7BHbn8w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\48502\\source\\repos\\PracaInzynierskaSkonczonaPoPoprawkachWizualnych\\Spotify-Social-Media-App\\SpotifySocialMedia\\Database\\Database.csproj",
+  "projectFilePath": "C:\\Users\\48502\\source\\repos\\pracainzynierskafinalfinalOstatni\\Spotify-Social-Media-App\\SpotifySocialMedia\\Database\\Database.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\48502\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\48502\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

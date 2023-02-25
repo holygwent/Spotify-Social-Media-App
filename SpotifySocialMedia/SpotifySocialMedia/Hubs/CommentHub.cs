@@ -6,9 +6,9 @@ namespace SpotifySocialMedia.Hubs
 {
     public class CommentHub : Hub
     {
-        private readonly ICommentRepository _commentRepository;
-        private readonly IRateRepository _rateRepository;
-        private readonly INotificationRepository _notificationRepository;
+        private readonly ICommentService _commentService;
+        private readonly IRateService _rateService;
+        private readonly INotificationService _notificationRepository;
 
 
 
@@ -18,11 +18,11 @@ namespace SpotifySocialMedia.Hubs
         //  await Clients.All.SendAsync("ReceivedMessage",new  { user=username,message=message});
         //}
 
-        public CommentHub(ICommentRepository commentRepository, IRateRepository rateRepository,INotificationRepository notificationRepository)
+        public CommentHub(ICommentService commentRepository, IRateService rateRepository, INotificationService notificationRepository)
         {
-            _commentRepository = commentRepository;
-            _rateRepository = rateRepository;
-           _notificationRepository = notificationRepository;
+            _commentService = commentRepository;
+            _rateService = rateRepository;
+            _notificationRepository = notificationRepository;
         }
 
         public async Task JoinGroup(string group)
@@ -32,21 +32,21 @@ namespace SpotifySocialMedia.Hubs
 
         public async Task SendRate(string group, string userEmail, string songId, int value)
         {
-            _rateRepository.Add(songId, userEmail, value).Wait();
-            var data = _rateRepository.GetAverageRate(songId).Result;
+            _rateService.Add(songId, userEmail, value).Wait();
+            var data = _rateService.GetAverageRate(songId).Result;
             await Clients.Group(group).SendAsync("ReceiveAverageRate", new
             {
                 AverageValue = data.AverageValue,
                 NumberOfEvaluators = data.NumberOfEvaluators
-            }); 
+            });
 
         }
 
 
-         public async Task SendReplyToGroup(string group, string username, string message, string songId, string parent)
+        public async Task SendReplyToGroup(string group, string username, string message, string songId, string parent)
         {
             string commentId;
-            commentId = _commentRepository.CreateReply(username,message, songId, parent).Result;
+            commentId = _commentService.CreateReply(username, message, songId, parent).Result;
             await Clients.Group(group).SendAsync("ReceivedReply", new
             {
                 commentId = commentId,
@@ -57,12 +57,12 @@ namespace SpotifySocialMedia.Hubs
                 parent = parent
             });
         }
-        
-          public async Task SendNotyfication( string group,string username, string message, string songId, string parent)
+
+        public async Task SendNotyfication(string group, string username, string message, string songId, string parent)
         {
-            var commentAuthorInfo = _commentRepository.GetCommentAuthor(parent).Result;
-           
-            if (commentAuthorInfo.AuthorEmail !=username )
+            var commentAuthorInfo = _commentService.GetCommentAuthor(parent).Result;
+
+            if (commentAuthorInfo.AuthorEmail != username)
             {
                 _notificationRepository.AddNotification(commentAuthorInfo.AuthorId, songId).Wait();
                 await Clients.User(commentAuthorInfo.AuthorId).SendAsync("ReceiveNotify", new
@@ -72,15 +72,15 @@ namespace SpotifySocialMedia.Hubs
                     group = group
                 });
             }
-           
+
         }
-        public async Task SendMessageToGroup(string group, string username, string message,string songId,string parent)
+        public async Task SendMessageToGroup(string group, string username, string message, string songId, string parent)
         {
             string commentId;
-            
-           if(parent =="null")
+
+            if (parent == "null")
             {
-               commentId =  _commentRepository.CreateComment( username,  message,  songId).Result;
+                commentId = _commentService.CreateComment(username, message, songId).Result;
                 await Clients.Group(group).SendAsync("ReceivedMessage", new
                 {
                     songId = songId,
@@ -91,14 +91,14 @@ namespace SpotifySocialMedia.Hubs
                     shortTime = DateTime.Now.ToShortTimeString()
                 });
             }
-           
-        
+
+
 
         }
         public async Task LeaveGroup(string group)
         {
             await Groups.RemoveFromGroupAsync(Context.ConnectionId, group);
         }
-    
+
     }
 }

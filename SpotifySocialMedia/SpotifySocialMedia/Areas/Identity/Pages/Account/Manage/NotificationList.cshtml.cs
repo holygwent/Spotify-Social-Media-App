@@ -8,9 +8,9 @@ namespace SpotifySocialMedia.Areas.Identity.Pages.Account.Manage
 {
     public class NotificationListModel : PageModel
     {
-        private readonly INotificationRepository _notificationRepository;
+        private readonly INotificationService _notificationRepository;
 
-        public NotificationListModel(INotificationRepository notificationRepository)
+        public NotificationListModel(INotificationService notificationRepository)
         {
             _notificationRepository = notificationRepository;
         }
