@@ -70,6 +70,7 @@ connection.on("ReceivedReply", (data) => {
 connection.on("ReceiveNotify", (data) => {
     let group = document.querySelector("[id=SongId]").getAttribute('alt');
     if (group != data.group) {
+        toastr.options.timeOut = '15000';
         toastr.info(`<a href="https://localhost:7115/Song/${data.songId}">See</a>`, data.communicat);
     }
 });
