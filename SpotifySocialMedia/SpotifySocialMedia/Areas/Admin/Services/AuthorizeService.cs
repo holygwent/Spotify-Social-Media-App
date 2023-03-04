@@ -19,7 +19,7 @@
                $"&response_type=code" +
                $"&redirect_uri=https://localhost:7115/Admin/Authorization/CallBack" +
                $"&state={_configurationAppSettingJSON["Spotify:state"]}" + 
-               $"&scope=user-read-private user-read-email";//if error change on space %20 | add new needed scopes
+               $"&scope=user-read-private user-read-email";
             return url;
         }
     }

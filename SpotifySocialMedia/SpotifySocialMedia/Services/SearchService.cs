@@ -21,7 +21,6 @@ namespace SpotifySocialMedia.Services
            _spotifyTokenService = spotifyTokenService;
             _databaseSpotifyTokenService = databaseSpotifyTokenService;
         }
-        //public async Task<IEnumerable<SongItem>> SearchSong(string phrase)
         public async Task<SongItemsTrack> SearchSong(string phrase)
         {
             await _spotifyTokenService.CheckTokenExpireDate();
@@ -75,26 +74,6 @@ namespace SpotifySocialMedia.Services
             return track;
         }
 
-        //public async Task<Song> GetSong(string Id)
-        //{
-        //    await _spotifyTokenService.CheckTokenExpireDate();
-        //    string accessToken = _databaseSpotifyTokenService.GetToken().access_token;
-        //    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-        //    var response = await _httpClient.GetAsync($"tracks/{Id}?market=ES");
-        //    response.EnsureSuccessStatusCode();
-        //    using var responseStream = await response.Content.ReadAsStreamAsync();
-        //    var responseObject = await JsonSerializer.DeserializeAsync<Item>(responseStream);
-        //    var song = new Song()
-        //    {
-        //        Id = responseObject.id,
-        //        Name = responseObject.name,
-        //        ImageUrl = responseObject.album.images.FirstOrDefault().url,
-        //        Link = responseObject.external_urls.spotify,
-        //        Artists = string.Join(",", responseObject.artists.Select(i => i.name)),
-        //        Date = responseObject.album.release_date
-
-        //   };
-        //    return song;
-        //}
+     
     }
 }

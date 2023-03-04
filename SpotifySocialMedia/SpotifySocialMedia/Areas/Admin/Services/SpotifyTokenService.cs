@@ -54,9 +54,6 @@ namespace SpotifySocialMedia.Areas.Admin.Services
             _databaseSpotifyTokenService.DropToken();
             _databaseSpotifyTokenService.AddToken(spotifyToken);
 
-
-
-
         }
 
         /// <summary>
@@ -86,7 +83,6 @@ namespace SpotifySocialMedia.Areas.Admin.Services
             spotifyToken.expires_at = DateTime.Now.AddSeconds(seconds).ToUniversalTime();
             _databaseSpotifyTokenService.DropToken();
             _databaseSpotifyTokenService.AddToken(spotifyToken);
-
 
         }
 
