@@ -1515,11 +1515,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\48502\\source\\repos\\pracainzynierskafinalfinalOstatni\\Spotify-Social-Media-App\\SpotifySocialMedia\\Database\\Database.csproj",
+      "projectUniqueName": "C:\\Users\\48502\\source\\repos\\praca inzynierska final poprawki\\Spotify-Social-Media-App\\SpotifySocialMedia\\Database\\Database.csproj",
       "projectName": "Database",
-      "projectPath": "C:\\Users\\48502\\source\\repos\\pracainzynierskafinalfinalOstatni\\Spotify-Social-Media-App\\SpotifySocialMedia\\Database\\Database.csproj",
+      "projectPath": "C:\\Users\\48502\\source\\repos\\praca inzynierska final poprawki\\Spotify-Social-Media-App\\SpotifySocialMedia\\Database\\Database.csproj",
       "packagesPath": "C:\\Users\\48502\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\48502\\source\\repos\\pracainzynierskafinalfinalOstatni\\Spotify-Social-Media-App\\SpotifySocialMedia\\Database\\obj\\",
+      "outputPath": "C:\\Users\\48502\\source\\repos\\praca inzynierska final poprawki\\Spotify-Social-Media-App\\SpotifySocialMedia\\Database\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

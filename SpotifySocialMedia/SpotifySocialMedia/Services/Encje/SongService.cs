@@ -16,18 +16,18 @@ namespace SpotifySocialMedia.Services.Repositories
     {
         private readonly ApplicationDbContext _dbContext;
         private readonly IMapper _mapper;
-        private readonly IArtistService _artistRepository;
+        private readonly IArtistService _artistService;
         public SongService(ApplicationDbContext dbContext, IMapper mapper,
-             IArtistService artistRepository)
+             IArtistService artistService)
         {
             _dbContext = dbContext;
             _mapper = mapper;
-            _artistRepository = artistRepository;
+            _artistService = artistService;
         }
 
         public async Task CreateSong(string songId)
         {
-            var songInfo = _artistRepository.AddArtist(songId).Result;
+            var songInfo = _artistService.AddArtist(songId).Result;
             await _dbContext.Songs.AddAsync(new Song { Id = songId, ArtistId = songInfo.ArtistId, Name = songInfo.SongName });
             await _dbContext.SaveChangesAsync();
         }

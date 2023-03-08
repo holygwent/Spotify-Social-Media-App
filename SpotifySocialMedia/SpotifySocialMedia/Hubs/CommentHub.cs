@@ -8,7 +8,7 @@ namespace SpotifySocialMedia.Hubs
     {
         private readonly ICommentService _commentService;
         private readonly IRateService _rateService;
-        private readonly INotificationService _notificationRepository;
+        private readonly INotificationService _notificationService;
 
 
 
@@ -22,7 +22,7 @@ namespace SpotifySocialMedia.Hubs
         {
             _commentService = commentRepository;
             _rateService = rateRepository;
-            _notificationRepository = notificationRepository;
+            _notificationService = notificationRepository;
         }
 
         public async Task JoinGroup(string group)
@@ -64,7 +64,7 @@ namespace SpotifySocialMedia.Hubs
 
             if (commentAuthorInfo.AuthorEmail != username)
             {
-                _notificationRepository.AddNotification(commentAuthorInfo.AuthorId, songId).Wait();
+                _notificationService.AddNotification(commentAuthorInfo.AuthorId, songId).Wait();
                 await Clients.User(commentAuthorInfo.AuthorId).SendAsync("ReceiveNotify", new
                 {
                     communicat = "Someone replied to your comment",
