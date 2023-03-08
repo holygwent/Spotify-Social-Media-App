@@ -8,7 +8,7 @@ namespace SpotifySocialMedia.Areas.Admin.Services
 {
     public interface ISpotifyTokenService
     {
-        Task SaveNewTokenToDatabase(string code, string clientId, string clientSecret);
+        Task SaveNewTokenToDatabase(string code, string clientId, string clientSecret,string host);
         Task RefreshToken(string refreshToken, string clientId, string clientSecret);
         Task CheckTokenExpireDate();
     }
@@ -33,7 +33,7 @@ namespace SpotifySocialMedia.Areas.Admin.Services
         /// <param name="clientId"> account id that i got from registering app on https://developer.spotify.com  </param>
         /// <param name="clientSecret"> client secret that i got from registering app on https://developer.spotify.com </param>
    
-        public async Task SaveNewTokenToDatabase(string code, string clientId, string clientSecret)
+        public async Task SaveNewTokenToDatabase(string code, string clientId, string clientSecret,string host)
         {
             var request = new HttpRequestMessage(HttpMethod.Post, "api/token");
             request.Headers.Authorization = new AuthenticationHeaderValue("Basic",
@@ -42,7 +42,7 @@ namespace SpotifySocialMedia.Areas.Admin.Services
             {
                 { "grant_type", "authorization_code" },
                 {"code",$"{code}" },
-                { "redirect_uri","https://localhost:7115/Admin/Authorization/CallBack"}
+                { "redirect_uri",$"https://{host}/Admin/Authorization/CallBack"}
             });
             var response = await _httpClient.SendAsync(request);
             response.EnsureSuccessStatusCode();

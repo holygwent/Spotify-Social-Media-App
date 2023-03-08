@@ -39,7 +39,8 @@ namespace SpotifySocialMedia.Areas.Admin.Controllers
         [Route("NewToken")]
         public  IActionResult NewToken()
         {
-            _spotifyTokenService.SaveNewTokenToDatabase(_databaseAuthorizationCodeService.GetCode(), _configurationAppSettingJSON["Spotify:ClientId"], _configurationAppSettingJSON["Spotify:ClientSecret"]).Wait();
+            string host = Request.Host.ToString();
+            _spotifyTokenService.SaveNewTokenToDatabase(_databaseAuthorizationCodeService.GetCode(), _configurationAppSettingJSON["Spotify:ClientId"], _configurationAppSettingJSON["Spotify:ClientSecret"],host).Wait();
             return RedirectToAction("Home", "Authorization");
         }
 
@@ -53,7 +54,8 @@ namespace SpotifySocialMedia.Areas.Admin.Controllers
         [Route("AuthorizationCode")]
         public IActionResult AuthorizationCode()
         {
-            string url = _authorizeService.GetLinkToAuthorize();
+            string host = Request.Host.ToString();
+            string url = _authorizeService.GetLinkToAuthorize(host);
             return Redirect(url);
         }
 
